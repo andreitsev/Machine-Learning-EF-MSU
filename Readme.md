@@ -1,6 +1,6 @@
 ## Содержание
 	
-1) [Градиентные методы оптимизации](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Лекция_1_Градиентные%20методы%20оптимизации.ipynb)
+1) [Градиентные методы оптимизации](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Градиентные%20методы%20оптимизации.ipynb)
 
 2) [Метрические методы](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Лекция_Метрические%20методы%20классификации%20и%20регрессии.ipynb)
 
