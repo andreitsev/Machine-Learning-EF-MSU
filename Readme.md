@@ -6,9 +6,9 @@
 
 3) [Логистическая регрессия](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Seminars/Демонстрация%20логистической%20регрессии.ipynb)
 
-4) [Снижение размерности и кластеризация](https://nbviewer.jupyter.org/github/andreitsev/Empirical-Statistics-EF-MSU-2019/blob/master/Снижение%20размерности%20и%20Кластеризация.ipynb)
+4) [Условная оптимизация и SVM](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Условная%20оптимизация%20и%20SVM.ipynb)
 
-5) [Условная оптимизация и SVM](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Условная%20оптимизация%20и%20SVM.ipynb)
+5) [Снижение размерности и кластеризация](https://nbviewer.jupyter.org/github/andreitsev/Empirical-Statistics-EF-MSU-2019/blob/master/Снижение%20размерности%20и%20Кластеризация.ipynb)
 
 6) [Градиентный бустинг](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Градиентный%20бустинг.ipynb)
 
