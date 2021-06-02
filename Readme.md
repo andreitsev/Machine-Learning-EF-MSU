@@ -8,7 +8,7 @@
 
 4) [Условная оптимизация и SVM](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Условная%20оптимизация%20и%20SVM.ipynb)
 
-5) [Снижение размерности и кластеризация](https://nbviewer.jupyter.org/github/andreitsev/Empirical-Statistics-EF-MSU-2019/blob/master/Снижение%20размерности%20и%20Кластеризация.ipynb)
+5) [Снижение размерности и кластеризация](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Снижение%20размерности%20и%20Кластеризация.ipynb)
 
 6) [Градиентный бустинг](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Градиентный%20бустинг.ipynb)
 
