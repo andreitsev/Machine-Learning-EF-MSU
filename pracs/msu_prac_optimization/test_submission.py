@@ -686,7 +686,7 @@ def test_Rosenbrok_hess():
         decision = " "*4 + f"x={x}\nyour hess:\n"
         decision += ' '*4 + f"f(x)={hess_f.tolist()}\n"
 
-        if abs(np.linalg.norm(hess_f - hess_f_x)) <= 1e-4:
+        if abs(np.linalg.norm(hess_f - hess_f_x)) <= 1e-2:
             decision += ' ✓'
         else:
             passed = False
