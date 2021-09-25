@@ -18,6 +18,8 @@
 
 #### Полезные ссылки:
 
+[Анализ малых данных](https://dyakonov.org/) - блог Дьяконова о машинном обучении
+
 [Гитхаб Дьяконова](https://github.com/Dyakonov?tab=repositories):
 
 - [IML](https://github.com/Dyakonov/IML) - курс по машинному обучению для 1-2 курсов.
