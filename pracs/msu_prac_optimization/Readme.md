@@ -16,8 +16,7 @@ docker pull mlefmsu/prac_optimization
 ```
 ![Pull example](/Users/antonandreytsev/Desktop/Machine-Learning-EF-MSU/pracs/msu_prac_optimization/pictures/docker_pull_example.png)
 
-![Pull example](https://github.com/andreitsev/Machine-Learning-EF-MSU/blob/master/docker_pull_example.png?raw=true)
-
+<img width="887" alt="docker_pull_example" src="https://user-images.githubusercontent.com/27732957/134806452-804b2cb6-40ee-4115-9e98-5290c8b3a295.png">
 
 4. Проверяем, что этот образ скачался 
 
