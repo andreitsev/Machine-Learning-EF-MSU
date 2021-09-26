@@ -16,6 +16,9 @@ docker pull mlefmsu/prac_optimization
 ```
 ![Pull example](/Users/antonandreytsev/Desktop/Machine-Learning-EF-MSU/pracs/msu_prac_optimization/pictures/docker_pull_example.png)
 
+![Pull example](https://github.com/andreitsev/Machine-Learning-EF-MSU/blob/master/docker_pull_example.png?raw=true)
+
+
 4. Проверяем, что этот образ скачался 
 
 ```angular2html
