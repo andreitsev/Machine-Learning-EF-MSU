@@ -38,9 +38,16 @@ docker images
 
 
 6. Запускаем проверку
+
+если у вас есть пароль от blackboxfunction.zip, то вот так:
 ```angular2html
-docker run --rm -it -v $PWD:/tmp mlefmsu/prac_optimization /bin/bash -c 'cp -r ./tmp/* ./prac_folder; cd ./prac_folder; bash test.sh; if [[ -f main_task_score.txt ]]; then cp main_task_score.txt ../tmp/; fi; if [[ -f blackbox_function_score.txt ]]; then cp blackbox_function_score.txt ../tmp/; fi'
+docker run --rm -it -e password=<пароль от blackboxfunction.zip> -v $PWD:/tmp mlefmsu/prac_optimization /bin/bash -c 'cp -r ./tmp/* ./prac_folder; cd ./prac_folder; python3 unzip_blackboxfunction.py --password=$password; bash test.sh; if [[ -f main_task_score.txt ]]; then cp main_task_score.txt ../tmp/; fi; if [[ -f blackbox_function_score.txt ]]; then cp blackbox_function_score.txt ../tmp/; fi'                                                      
 ```
+если нет, то вот так:
+```angular2html
+docker run --rm -it -v $PWD:/tmp mlefmsu/prac_optimization /bin/bash -c 'cp -r ./tmp/* ./prac_folder; cd ./prac_folder; python3 unzip_blackboxfunction.py; bash test.sh; if [[ -f main_task_score.txt ]]; then cp main_task_score.txt ../tmp/; fi; if [[ -f blackbox_function_score.txt ]]; then cp blackbox_function_score.txt ../tmp/; fi'                                                      
+```
+
 [comment]: <> (![test example]&#40;/Users/antonandreytsev/Desktop/Machine-Learning-EF-MSU/pracs/msu_prac_optimization/pictures/test.png&#41;)
 
 <img width="1417" alt="test" src="https://user-images.githubusercontent.com/27732957/134806579-8b980d80-a7bd-4a9c-b8cc-8db79fce6a7f.png">
