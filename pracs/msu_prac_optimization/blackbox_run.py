@@ -28,7 +28,7 @@ def show_best_trial(trials_history: np.ndarray, func_vals_history: np.ndarray) -
     return func_vals_history[best_iteration]
 
 
-max_iter = 10000
+max_iter = 1000
 trials_history = []
 func_vals_history = []
 trial = None
