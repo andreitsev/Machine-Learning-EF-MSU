@@ -1,4 +1,4 @@
 .idea
 .ipynb_checkpoints
 *__pycache__*
-*blackboxfunction.py*
+blackboxfunction.py
