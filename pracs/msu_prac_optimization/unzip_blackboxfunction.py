@@ -2,7 +2,7 @@ import argparse
 from zipfile import ZipFile
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--password", help="Режим оптимизации: manual или auto", type=str, default=None)
+parser.add_argument("--password", help="Пароль от blackboxfunction.zip файла", type=str, default=None)
 args = parser.parse_args()
 password = args.password
 
