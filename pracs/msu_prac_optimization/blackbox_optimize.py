@@ -3,7 +3,7 @@ from typing import Tuple, Union
 
 def blackbox_optimize(
         args_history: np.ndarray,
-        : np.ndarray
+        func_vals_history: np.ndarray
 ) -> Union[np.ndarray, str]:
 
     """
