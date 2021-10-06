@@ -1,8 +1,8 @@
 ## Содержание
 
-6) [Градиентный бустинг](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Градиентный%20бустинг.ipynb)
+[comment]: <> (6&#41; [Градиентный бустинг]&#40;https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Градиентный%20бустинг.ipynb&#41;)
 
-7) [Нейронные сети](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/NN_intro.ipynb)
+[comment]: <> (7&#41; [Нейронные сети]&#40;https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/NN_intro.ipynb&#41;)
 
 | Тема | Материалы | Задания | Проверочные |
 | :---: | :---: | :---: | :---: |
