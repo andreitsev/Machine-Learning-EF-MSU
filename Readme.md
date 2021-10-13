@@ -39,4 +39,4 @@
 - [Соколов. ML1](http://wiki.cs.hse.ru/Машинное_обучение_1/2020_2021)
 - [Соколов. ML2](http://wiki.cs.hse.ru/Машинное_обучение_2)
 
-[Книга Дмитрия Ефимова](https://drive.google.com/file/d/1MjnGKB8gIIUGk63PSNzLn3w0jI05XaI6/view?usp=sharing) (Есть примеры реализаций ML алгоритмов на голом питоне)
+[comment]: <> ([Книга Дмитрия Ефимова]&#40;https://drive.google.com/file/d/1MjnGKB8gIIUGk63PSNzLn3w0jI05XaI6/view?usp=sharing&#41; &#40;Есть примеры реализаций ML алгоритмов на голом питоне&#41;)
