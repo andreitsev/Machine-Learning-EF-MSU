@@ -16,6 +16,13 @@
 | Обучение без учителя | Embeddings <br> [Снижение размерности и кластеризация](https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Снижение%20размерности%20и%20Кластеризация.ipynb) (ноутбук) <br> [Соколов PCA](https://drive.google.com/file/d/1lkfVAdmLKDpWgNf4SetqOjZru-j2Yb6L/view?usp=sharing) <br> [Word2Vec](https://lena-voita.github.io/nlp_course/word_embeddings.html) <br> [Соколов t-SNE](https://drive.google.com/file/d/1HuB09_vrGUe9G8E_Jcw61okrGSkwUlts/view?usp=sharing) <br> [Математика в машинном обучении](https://drive.google.com/file/d/1gRVhBINgoFQHWQsUTXfZoi0BOcLDU0Th/view?usp=sharing) (стр. 317, Dimensionality Reduction with Principal Component Analysis) <br> __________________________________ <br> Кластеризация <br> [Соколов Кластеризация](https://drive.google.com/file/d/1HuB09_vrGUe9G8E_Jcw61okrGSkwUlts/view?usp=sharing) <br> [DBSCAN](https://habr.com/ru/post/322034/) <br> __________________________________ <br> Дополнительно <br> [clustering+tsne](https://colab.research.google.com/drive/16OkfhtpvioTKh1PfYT_EL80fFdnBVtb1?authuser=4) (ноутбук) <br> [Байесовский вариант PCA](https://drive.google.com/file/d/1Nq0mkvh-m7z0ggDFBrRv9XiD1nEVBEGe/view?usp=sharing) <br> [Embeddings в рекомендательных системах](https://drive.google.com/file/d/1dxbdmKlC5ilwanaXj0BoCqKC8esz1bjF/view?usp=sharing) (2.1.2 Модели со скрытыми переменными) <br> [t-SNE paper](https://drive.google.com/file/d/1kiUYHee5FJWz74mtELfs-sHm_f8StAdL/view?usp=sharing) <br> [Соколов про t-SNE](https://drive.google.com/file/d/10QOcmthhxBJs4Wf2F26-fECwLMuyxCCd/view?usp=sharingГиперссылка) (Обратите внимание, что там потерян минус в определении условных вероятностей p и q)| [Семинарские задачи](https://www.overleaf.com/read/xpvbtnsybxzd) |
 | Байесовские методы | Основные <br> [Дьяконов Байесовский подход в ML](https://dyakonov.org/2018/07/30/байесовский-подход/) <br>  [Соколов ЕМ](https://drive.google.com/file/d/19vRAxRn6xEovWYI6hJv8SmLS2E5-Y8Qj/view?usp=sharing) <br> [Соколов plsa](https://drive.google.com/file/d/10ljjGCZdZP1jX-xEDg24GkKU4yVfcQDV/view?usp=sharing) <br> [Соколов ЕМ для PCA](https://drive.google.com/file/d/16R14z9NLWWpO9CTNc9fCy7FHH2fzDbfr/view?usp=sharing) <br> _________________________________ <br> Дополнительно <br> [Воронцов Topic modelling (presentation)](https://drive.google.com/file/d/1U1g-SNLR5XocQtG77cS510-kFvj3Yfol/view?usp=sharing) <br> [Ветров Bayes PCA](https://drive.google.com/file/d/1pMiJUgCAgMNTLYJw60PpQ_wvWjD34P2E/view?usp=sharing) <br> [Воронцов Topic modeilling (pdf)](https://drive.google.com/file/d/195S8BPIXoMi9VvtmsnBp5YwMUPp89nKZ/view?usp=sharing) <br> [Курс ФКН по байесовским методам](http://wiki.cs.hse.ru/Байесовские_методы_машинного_обучения_2020) | [Семинарские задачи](https://www.overleaf.com/read/wcthtfxzsdkm) |
 | Нейронные сети | <br> _________________________________ <br> Дополнительно <br> [Yann LeCun](https://atcold.github.io/pytorch-Deep-Learning/) |
+
+### Материалы к экзамену:
+1. [Билеты](https://www.overleaf.com/read/hgrkssyrztpd)
+   - [Расписанные билеты](https://www.overleaf.com/read/vqdgddypzwsx)
+2. [Теоретический минимум](https://www.overleaf.com/read/jyqfphfjrynj)
+   - [Расписанный теормин](https://www.overleaf.com/read/hmrwwcpgxvxr)
+
 #### Тесты:
 
 [Минитест от Дьяконова](https://docs.google.com/forms/d/e/1FAIpQLScFNuftP6MHVMhGHKpCPJu9jWphSiCTBkP16U21tLMFdDQHFQ/viewform) - на знание ML
@@ -39,4 +46,4 @@
 - [Соколов. ML1](http://wiki.cs.hse.ru/Машинное_обучение_1/2020_2021)
 - [Соколов. ML2](http://wiki.cs.hse.ru/Машинное_обучение_2)
 
-[comment]: <> ([Книга Дмитрия Ефимова]&#40;https://drive.google.com/file/d/1MjnGKB8gIIUGk63PSNzLn3w0jI05XaI6/view?usp=sharing&#41; &#40;Есть примеры реализаций ML алгоритмов на голом питоне&#41;)
+[Книга Дмитрия Ефимова](https://drive.google.com/file/d/1MjnGKB8gIIUGk63PSNzLn3w0jI05XaI6/view?usp=sharing) (Есть примеры реализаций ML алгоритмов на голом питоне)
