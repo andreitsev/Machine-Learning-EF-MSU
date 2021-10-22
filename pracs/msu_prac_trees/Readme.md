@@ -27,9 +27,7 @@ https://www.overleaf.com/project/6172f6ebd96be5ef0fbf01fc
 docker pull mlefmsu/prac_trees
 ```
 
-[comment]: <> (![Pull example]&#40;/Users/antonandreytsev/Desktop/Machine-Learning-EF-MSU/pracs/msu_prac_optimization/pictures/docker_pull_example.png&#41;)
-
-<img width="887" alt="docker_pull_example" src="https://user-images.githubusercontent.com/27732957/134806452-804b2cb6-40ee-4115-9e98-5290c8b3a295.png">
+<img width="847" alt="pull" src="https://user-images.githubusercontent.com/27732957/138518669-811c2d71-e924-46ce-8d21-1ebdd7b16326.png">
 
 4. Проверяем, что этот образ скачался 
 
@@ -37,36 +35,26 @@ docker pull mlefmsu/prac_trees
 docker images
 ```
 
-[comment]: <> (![Images example]&#40;/Users/antonandreytsev/Desktop/Machine-Learning-EF-MSU/pracs/msu_prac_optimization/pictures/docker_images_ex.png&#41;)
-
-<img width="768" alt="docker_images_ex" src="https://user-images.githubusercontent.com/27732957/134806497-549f3796-1406-41f3-bee4-2eacfb15ec38.png">
-
+<img width="770" alt="images" src="https://user-images.githubusercontent.com/27732957/138518779-cbebf228-9add-4f23-b554-91e85e27765d.png">
 
 5. Переходим в папку с вашей практической
 
-[comment]: <> (![cd example]&#40;/Users/antonandreytsev/Desktop/Machine-Learning-EF-MSU/pracs/msu_prac_optimization/pictures/cd.png&#41;)
-
-<img width="808" alt="cd" src="https://user-images.githubusercontent.com/27732957/134806526-e22a1b00-7426-43a3-9df5-f1a075add2fd.png">
-
+<img width="685" alt="cd" src="https://user-images.githubusercontent.com/27732957/138518834-2150d072-ee72-4f1f-a29e-4d872bdc2650.png">
 
 6. Запускаем проверку
 
 если у вас есть пароль от blackboxfunction.zip, то вот так:
 ```angular2html
-docker run --rm -it -e password=<пароль от blackboxfunction.zip> -v $PWD:/tmp mlefmsu/prac_optimization /bin/bash -c 'cp -r ./tmp/* ./prac_folder; cd ./prac_folder; python3 unzip_blackboxfunction.py --password=$password; bash test.sh; if [[ -f main_task_score.txt ]]; then cp main_task_score.txt ../tmp/; fi; if [[ -f blackbox_function_score.txt ]]; then cp blackbox_function_score.txt ../tmp/; fi'                                                      
+docker run --rm -it -e password=<пароль от private_tests.zip> -v $PWD:/tmp mlefmsu/prac_optimization /bin/bash -c 'cp -r ./tmp/* ./prac_folder; cd ./prac_folder; python3 unzip_private_tests.py --password=$password; python3 test_submission.py; if [[ -f main_task_score.txt ]]; then mv main_task_score.txt ../tmp/; fi'                                                      
 ```
 если нет, то вот так:
 ```angular2html
-docker run --rm -it -v $PWD:/tmp mlefmsu/prac_optimization /bin/bash -c 'cp -r ./tmp/* ./prac_folder; cd ./prac_folder; python3 unzip_blackboxfunction.py; bash test.sh; if [[ -f main_task_score.txt ]]; then cp main_task_score.txt ../tmp/; fi; if [[ -f blackbox_function_score.txt ]]; then cp blackbox_function_score.txt ../tmp/; fi'                                                      
+docker run --rm -it -v $PWD:/tmp mlefmsu/prac_optimization /bin/bash -c 'cp -r ./tmp/* ./prac_folder; cd ./prac_folder; python3 unzip_private_tests.py; python3 unzip_private_tests.py; if [[ -f main_task_score.txt ]]; then mv main_task_score.txt ../tmp/; fi'                                                      
 ```
 
-[comment]: <> (![test example]&#40;/Users/antonandreytsev/Desktop/Machine-Learning-EF-MSU/pracs/msu_prac_optimization/pictures/test.png&#41;)
-
-<img width="1417" alt="test" src="https://user-images.githubusercontent.com/27732957/134806579-8b980d80-a7bd-4a9c-b8cc-8db79fce6a7f.png">
+<img width="1337" alt="docker run" src="https://user-images.githubusercontent.com/27732957/138518933-ea212144-97ef-4e97-9a0e-dd1a381f1e03.png">
 
 
+7. После отработки кода в вашей директории появится 1 новый файл: main_task_score.txt
 
-7. После отработки кода в вашей директории появится 2 новых файла: main_task_score.txt и blackbox_function_score.txt
-
-[comment]: <> (![new files example]&#40;/Users/antonandreytsev/Desktop/Machine-Learning-EF-MSU/pracs/msu_prac_optimization/pictures/new_files.png&#41;)
-<img width="1103" alt="new_files" src="https://user-images.githubusercontent.com/27732957/134806658-e95a7b2d-ac1d-432a-bc9f-0b86d82df4d4.png">
+<img width="566" alt="result" src="https://user-images.githubusercontent.com/27732957/138519211-a34d0751-e70c-4253-b9b5-160b84cdca11.png">
