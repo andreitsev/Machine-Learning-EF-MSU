@@ -45,11 +45,11 @@ docker images
 
 если у вас есть пароль от blackboxfunction.zip, то вот так:
 ```angular2html
-docker run --rm -it -e password=<пароль от private_tests.zip> -v $PWD:/tmp mlefmsu/prac_trees /bin/bash -c 'cp -r ./tmp/* ./prac_folder; cd ./prac_folder; python3 unzip_private_tests.py --password=$password; python3 test_submission.py; if [[ -f main_task_score.txt ]]; then mv main_task_score.txt ../tmp/; fi'                                                      
+docker run --rm -it -e password=<пароль от private_tests.zip> -v $PWD:/tmp mlefmsu/prac_trees /bin/bash -c 'cp -r /tmp/* /prac_folder; cd /prac_folder; python3 unzip_private_tests.py --password=$password; python3 test_submission.py; if [[ -f main_task_score.txt ]]; then mv main_task_score.txt ../tmp/; fi'                                                      
 ```
 если нет, то вот так:
 ```angular2html
-docker run --rm -it -v $PWD:/tmp mlefmsu/prac_trees /bin/bash -c 'cp -r ./tmp/* ./prac_folder; cd ./prac_folder; python3 unzip_private_tests.py; python3 unzip_private_tests.py; if [[ -f main_task_score.txt ]]; then mv main_task_score.txt ../tmp/; fi'                                                      
+docker run --rm -it -v $PWD:/tmp mlefmsu/prac_trees /bin/bash -c 'cp -r /tmp/* /prac_folder; cd /prac_folder; python3 unzip_private_tests.py; python3 unzip_private_tests.py; if [[ -f main_task_score.txt ]]; then mv main_task_score.txt ../tmp/; fi'                                                      
 ```
 
 <img width="1337" alt="docker run" src="https://user-images.githubusercontent.com/27732957/138518933-ea212144-97ef-4e97-9a0e-dd1a381f1e03.png">
