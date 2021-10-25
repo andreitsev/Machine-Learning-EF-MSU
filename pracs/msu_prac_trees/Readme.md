@@ -1,6 +1,7 @@
 *Ссылка на текст практической:*
 
-https://www.overleaf.com/project/6172f6ebd96be5ef0fbf01fc
+https://www.overleaf.com/read/yrwdkbnyywtv
+
 
 ### Инструкция по проверке решения:
 
