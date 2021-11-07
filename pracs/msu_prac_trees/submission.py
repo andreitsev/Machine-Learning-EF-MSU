@@ -8,7 +8,7 @@ from category_encoders import TargetEncoder
 from typing import List, Union, Tuple
 
 
-def compute_criterion(target_vector: np.array, feature_vector: int, threshold: float, criterion: str = 'gini') -> float:
+def compute_criterion(target_vector: np.array, feature_vector: np.array, threshold: float, criterion: str = 'gini') -> float:
     """
     Вычисляет критерий расщепления листа на два
         Q = H(R) - |R_l|/|R| * H(R_l) - |R_r|/|R| * H(R_r)
