@@ -18,7 +18,7 @@ def compute_criterion(target_vector: np.array, feature_vector: np.array, thresho
     Если в feature_vector только 1 уникальное значение, функция должна вернуть 0
 
     Args:
-        target_vector: вектор таргетов (бинарный)
+        target_vector: вектор таргетов (многоклассовый)
         feature_vector: вектор с конкретной фичёй объектов (вещественный)
         threshold: погор для разбиение на левое и правое поддеревья
         criterion: какой критерий считать ("gini" или "entropy")
