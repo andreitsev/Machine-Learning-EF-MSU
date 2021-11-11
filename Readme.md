@@ -37,6 +37,8 @@
 
 #### Полезные ссылки:
 
+[Учебник по ML от ШАД](https://ml-handbook.ru/)
+
 [Анализ малых данных](https://dyakonov.org/) - блог Дьяконова о машинном обучении
 
 [Гитхаб Дьяконова](https://github.com/Dyakonov?tab=repositories):
