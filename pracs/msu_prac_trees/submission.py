@@ -76,7 +76,6 @@ class DecisionTree(BaseEstimator):
             criterion: str = 'gini',
             max_depth: int = None,
             min_samples_split: int = None,
-            min_samples_leaf: int = None
     ):
         """
         Args:
@@ -84,7 +83,6 @@ class DecisionTree(BaseEstimator):
             criterion: может быть 'gini' или "entropy"
             max_depth: максимальная глубина дерева
             min_samples_split: минимальное число объектов в листе, чтобы можно было расщиплять этот лист
-            min_samples_leaf: минимальное число объектов в полученных листьях
         """
 
         self._feature_types = feature_types
@@ -94,7 +92,6 @@ class DecisionTree(BaseEstimator):
         self._criterion = criterion
         self.max_depth = max_depth
         self._min_samples_split = min_samples_split
-        self._min_samples_leaf = min_samples_leaf
 
     def _fit_node(self, sub_X: np.ndarray, sub_y: np.ndarray, node: dict):
         """
