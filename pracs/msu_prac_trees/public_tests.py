@@ -83,7 +83,7 @@ find_best_split_tests = [
 
 DecisionTree_fit_tests= [
     {
-        'ADD_SCORE_FOR_THIS_TEST': 0.2,
+        'ADD_SCORE_FOR_THIS_TEST': 1,
         "X": pd.read_csv('./data/moon_data.csv', header=None).drop([2], axis=1).values,
         'y': pd.read_csv('./data/moon_data.csv', header=None)[2].values.astype(int),
         "tree_params": {
@@ -102,96 +102,7 @@ DecisionTree_fit_tests= [
     },#1
 
     {
-        'ADD_SCORE_FOR_THIS_TEST': 0.2,
-        "X": pd.read_csv('./data/moon_data.csv', header=None).drop([2], axis=1).values,
-        'y': pd.read_csv('./data/moon_data.csv', header=None)[2].values.astype(int),
-        "tree_params": {
-            "feature_types": ['real', 'real'],
-            "criterion": 'gini',
-            "min_samples_leaf": 100,
-        },
-        "true_result": {
-            'type': 'nonterminal',
-            'feature_type': 'real',
-            'feature_number': 1,
-            'threshold': 0.17122713966611064,
-            'left_child': {
-                'type': 'nonterminal',
-                'feature_type': 'real',
-                'feature_number': 0,
-                'threshold': -0.6194477171724573,
-                'left_child': {'type': 'terminal', 'classes_distribution': array([39, 1])},
-                'right_child': {
-                    'type': 'nonterminal',
-                    'feature_type': 'real',
-                    'feature_number': 1,
-                    'threshold': -0.10561213615249625,
-                    'left_child': {
-                        'type': 'nonterminal',
-                        'feature_type': 'real',
-                        'feature_number': 0,
-                        'threshold': -0.31270935917164117,
-                        'left_child': {'type': 'terminal', 'classes_distribution': array([1, 0])},
-                        'right_child': {
-                            'type': 'nonterminal',
-                            'feature_type': 'real',
-                            'feature_number': 1,
-                            'threshold': -0.2333965602271226,
-                            'left_child': {
-                                'type': 'nonterminal',
-                                'feature_type': 'real',
-                                'feature_number': 1,
-                                'threshold': -0.4111251927746415,
-                                'left_child': {'type': 'terminal', 'classes_distribution': array([0, 140])},
-                                'right_child': {'type': 'terminal', 'classes_distribution': array([2, 72])}
-                            },
-                            'right_child': {'type': 'terminal', 'classes_distribution': array([4, 63])}
-                        }
-                    },
-                    'right_child': {'type': 'terminal', 'classes_distribution': array([20, 105])}
-                }
-            },
-            'right_child': {
-                'type': 'nonterminal',
-                'feature_type': 'real',
-                'feature_number': 0,
-                'threshold': 1.5082666540295038,
-                'left_child': {
-                    'type': 'nonterminal',
-                    'feature_type': 'real',
-                    'feature_number': 1,
-                    'threshold': 0.3373510036902131,
-                    'left_child': {'type': 'terminal', 'classes_distribution': array([56, 25])},
-                    'right_child': {
-                        'type': 'nonterminal',
-                        'feature_type': 'real',
-                        'feature_number': 0,
-                        'threshold': -0.18126774083361813,
-                        'left_child': {'type': 'terminal', 'classes_distribution': array([153, 4])},
-                        'right_child': {
-                            'type': 'nonterminal',
-                            'feature_type': 'real',
-                            'feature_number': 1,
-                            'threshold': 0.8452502279844462,
-                            'left_child': {
-                                'type': 'nonterminal',
-                                'feature_type': 'real',
-                                'feature_number': 0,
-                                'threshold': 0.26679239556490286,
-                                'left_child': {'type': 'terminal', 'classes_distribution': array([25, 21])},
-                                'right_child': {'type': 'terminal', 'classes_distribution': array([99, 11])}
-                            },
-                            'right_child': {'type': 'terminal', 'classes_distribution': array([99, 3])}
-                        }
-                    }
-                },
-                'right_child': {'type': 'terminal', 'classes_distribution': array([2, 55])}
-            }
-        }
-    }, #2
-
-    {
-        'ADD_SCORE_FOR_THIS_TEST': 0.2,
+        'ADD_SCORE_FOR_THIS_TEST': 2,
         "X": pd.read_csv('./data/moon_data.csv', header=None).drop([2], axis=1).values,
         'y': pd.read_csv('./data/moon_data.csv', header=None)[2].values.astype(int),
         "tree_params": {
@@ -236,10 +147,10 @@ DecisionTree_fit_tests= [
                   'right_child': {'type': 'terminal', 'classes_distribution': array([ 2, 55])}
              }
         }
-    }, #3
+    }, #2
 
     {
-        'ADD_SCORE_FOR_THIS_TEST': 0.3,
+        'ADD_SCORE_FOR_THIS_TEST': 1,
         "X": pd.read_csv('./data/agaricus_lepiota.csv').values[:, 1:],
         'y': pd.read_csv('./data/agaricus_lepiota.csv').values[:, 0].astype(int),
         "tree_params": {
@@ -269,10 +180,10 @@ DecisionTree_fit_tests= [
                   }
              }
         }
-    }, #4
+    }, #3
 
     {
-        'ADD_SCORE_FOR_THIS_TEST': 0.2,
+        'ADD_SCORE_FOR_THIS_TEST': 1,
         "X": pd.read_csv('./data/cars.csv').values[:, :-1],
         'y': pd.read_csv('./data/cars.csv')['target'].astype('category').cat.codes.values.astype(int),
         "tree_params": {
@@ -315,13 +226,13 @@ DecisionTree_fit_tests= [
              },
              'right_child': {'type': 'terminal', 'classes_distribution': array([  0,   0, 576,   0])}
         }
-    }, #5
+    }, #4
 
 ]
 
 DecisionTree_predict_proba_tests = [
     {
-        'ADD_SCORE_FOR_THIS_TEST': 0.1,
+        'ADD_SCORE_FOR_THIS_TEST': 0.5,
         "X": pd.read_csv('./data/moon_data.csv', header=None).drop([2], axis=1).values,
         'y': pd.read_csv('./data/moon_data.csv', header=None)[2].values.astype(int),
         "tree_params": {
@@ -333,19 +244,7 @@ DecisionTree_predict_proba_tests = [
     }, #1
 
     {
-        'ADD_SCORE_FOR_THIS_TEST': 0.1,
-        "X": pd.read_csv('./data/moon_data.csv', header=None).drop([2], axis=1).values,
-        'y': pd.read_csv('./data/moon_data.csv', header=None)[2].values.astype(int),
-        "tree_params": {
-            "feature_types": ['real', 'real'],
-            "criterion": 'gini',
-            "min_samples_leaf": 100,
-        },
-        "true_result": 0.907
-    }, #2
-
-    {
-        'ADD_SCORE_FOR_THIS_TEST': 0.1,
+        'ADD_SCORE_FOR_THIS_TEST': 1,
         "X": pd.read_csv('./data/moon_data.csv', header=None).drop([2], axis=1).values,
         'y': pd.read_csv('./data/moon_data.csv', header=None)[2].values.astype(int),
         "tree_params": {
@@ -355,10 +254,10 @@ DecisionTree_predict_proba_tests = [
             'max_depth': 4,
         },
         'true_result': 0.906
-    }, #3
+    }, #2
 
     {
-        'ADD_SCORE_FOR_THIS_TEST': 0.2,
+        'ADD_SCORE_FOR_THIS_TEST': 0.5,
         "X": pd.read_csv('./data/agaricus_lepiota.csv').values[:, 1:],
         'y': pd.read_csv('./data/agaricus_lepiota.csv').values[:, 0].astype(int),
         "tree_params": {
@@ -367,10 +266,10 @@ DecisionTree_predict_proba_tests = [
             'max_depth': 4,
         },
         'true_result': 0.517971442639094
-    }, #4
+    }, #3
 
     {
-        'ADD_SCORE_FOR_THIS_TEST': 0.1,
+        'ADD_SCORE_FOR_THIS_TEST': 0.5,
         "X": pd.read_csv('./data/cars.csv').values[:, :-1],
         'y': pd.read_csv('./data/cars.csv')['target'].astype('category').cat.codes.values.astype(int),
         "tree_params": {
@@ -379,5 +278,5 @@ DecisionTree_predict_proba_tests = [
             'max_depth': 5,
         },
         'true_result': 0.3888888888888889
-    }, #5
+    }, #4
 ]

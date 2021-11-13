@@ -18,7 +18,3 @@ RUN pip install --no-cache-dir \
 RUN mkdir /prac_folder
 
 COPY . /prac_folder
-
-EXPOSE 8989
-
-CMD ["jupyter", "notebook", "--port=8989", "--no-browser", "--ip=0.0.0.0", "--allow-root", "--NotebookApp.token=joitandr1410"]
