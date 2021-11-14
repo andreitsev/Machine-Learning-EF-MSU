@@ -168,13 +168,13 @@ DecisionTree_fit_tests= [
                  'type': 'nonterminal',
                   'feature_type': 'categorical',
                   'feature_number': 19,
-                  'threshold': 0.46153846153846156,
+                  'threshold': 0.014705882352941176,
                   'left_child': {'type': 'terminal', 'classes_distribution': array([72,  0])},
                   'right_child': {
                       'type': 'nonterminal',
                        'feature_type': 'categorical',
                        'feature_number': 14,
-                       'threshold': 0.8985250737463126,
+                       'threshold': 0.21634615384615385,
                        'left_child': {'type': 'terminal', 'classes_distribution': array([40, 64])},
                        'right_child': {'type': 'terminal', 'classes_distribution': array([   8, 4144])}
                   }
@@ -200,27 +200,28 @@ DecisionTree_fit_tests= [
                  'type': 'nonterminal',
                   'feature_type': 'categorical',
                   'feature_number': 5,
-                  'threshold': 1.5143229166666665,
+                  'threshold': 1.6762152777777777,
                   'left_child': {
                       'type': 'nonterminal',
                        'feature_type': 'categorical',
                        'feature_number': 1,
-                       'threshold': 0.9557291666666667,
+                       'threshold': 1.5358796296296295,
                        'left_child': {
                            'type': 'nonterminal',
                             'feature_type': 'categorical',
-                            'feature_number': 0,
-                            'threshold': 0.8177083333333334,
-                            'left_child': {'type': 'terminal', 'classes_distribution': array([144,   0,  48,   0])},
-                            'right_child': {'type': 'terminal', 'classes_distribution': array([63, 69,  8, 52])}
+                            'feature_number': 5,
+                            'threshold': 1.3298611111111112,
+                            'left_child': {'type': 'terminal', 'classes_distribution': array([105,  39,  48,   0])},
+                            'right_child': {'type': 'terminal', 'classes_distribution': array([102,  30,   8,  52])}
                        },
-                       'right_child': {'type': 'nonterminal',
-                        'feature_type': 'categorical',
-                        'feature_number': 0,
-                        'threshold': 1.625,
-                        'left_child': {'type': 'terminal',
-                         'classes_distribution': array([177,   0,  98,  13])},
-                        'right_child': {'type': 'terminal', 'classes_distribution': array([ 0,  0, 96,  0])}}
+                       'right_child': {
+                           'type': 'nonterminal',
+                            'feature_type': 'categorical',
+                            'feature_number': 0,
+                            'threshold': 1.619212962962963,
+                            'left_child': {'type': 'terminal', 'classes_distribution': array([177,   0,  98,  13])},
+                            'right_child': {'type': 'terminal', 'classes_distribution': array([ 0,  0, 96,  0])}
+                       }
                   },
                   'right_child': {'type': 'terminal', 'classes_distribution': array([  0,   0, 384,   0])}
              },
