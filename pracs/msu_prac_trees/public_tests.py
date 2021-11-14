@@ -262,11 +262,11 @@ DecisionTree_predict_proba_tests = [
         "X": pd.read_csv('./data/agaricus_lepiota.csv').values[:, 1:],
         'y': pd.read_csv('./data/agaricus_lepiota.csv').values[:, 0].astype(int),
         "tree_params": {
-            "feature_types": ['categorical']*22,
+            "feature_types": ['categorical'] * 22,
             "criterion": 'entropy',
             'max_depth': 4,
         },
-        'true_result': 0.517971442639094
+        'true_result': 0.9940915805022157
     }, #3
 
     {
@@ -274,10 +274,10 @@ DecisionTree_predict_proba_tests = [
         "X": pd.read_csv('./data/cars.csv').values[:, :-1],
         'y': pd.read_csv('./data/cars.csv')['target'].astype('category').cat.codes.values.astype(int),
         "tree_params": {
-            "feature_types": ['categorical']*6,
+            "feature_types": ['categorical'] * 6,
             "criterion": 'entropy',
             'max_depth': 5,
         },
-        'true_result': 0.3888888888888889
+        'true_result': 0.8333333333333334
     }, #4
 ]

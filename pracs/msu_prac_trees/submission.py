@@ -180,8 +180,10 @@ class DecisionTree(BaseEstimator):
             X: матрица объект-признак размеров (n, len(self._feature_types))
             y: вектор таргетов (состоящий из int) размера (n,)
         """
-
         assert len(set(y)) > 1, 'Таргет должен содержать более одного класса!'
+
+        # prepare category encoding (your code here):
+        
         self._fit_node(sub_X=X, sub_y=y, node=self._tree)
 
     def predict_proba(self, X: np.ndarray) -> np.ndarray:

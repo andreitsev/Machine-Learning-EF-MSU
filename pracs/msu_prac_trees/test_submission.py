@@ -1,13 +1,15 @@
 import os
 from os.path import join as p_join
 import numpy as np
+from copy import deepcopy
 try:
     from fabulous import color as fb_color
     color_print = lambda x, color='green': print(getattr(fb_color, color)(x)) if 'fb_color' in globals() else print(x)
 except:
     color_print = lambda x, color='green': print(x)
 
-from submission import *
+# from submission import *
+from submission_solved import *
 
 # Для тестирования обученных деревьев
 from deepdiff import DeepDiff
@@ -187,7 +189,8 @@ def test_DecisionTree_predict():
             true_result = test.pop('true_result')
         try:
             dt = DecisionTree(**test['tree_params'])
-            dt.fit(X=test["X"], y=test["y"])
+            X_copy, y_copy = deepcopy(test['X']), deepcopy(test['y'])
+            dt.fit(X=X_copy, y=y_copy)
             y_pred = dt.predict(test["X"])
             acc = accuracy_score(y_true=test["y"], y_pred=y_pred)
             if abs(acc - true_result) < 1e-2:
@@ -200,7 +203,6 @@ def test_DecisionTree_predict():
                 test_str += 'x'
                 passed_all_tests = False
                 color_print(x=test_str, color='red')
-                color_print(test_res, color='red')
         except:
             test_str += 'Failed to test'
             passed_all_tests = False
@@ -214,7 +216,8 @@ def test_DecisionTree_predict():
                 true_result = test.pop('true_result')
             try:
                 dt = DecisionTree(**test['tree_params'])
-                dt.fit(X=test["X"], y=test["y"])
+                X_copy, y_copy = deepcopy(test['X']), deepcopy(test['y'])
+                dt.fit(X=X_copy, y=y_copy)
                 y_pred = dt.predict(test["X"])
                 acc = accuracy_score(y_true=test["y"], y_pred=y_pred)
                 if abs(acc - true_result) < 1e-2:
@@ -227,7 +230,6 @@ def test_DecisionTree_predict():
                     test_str += 'x'
                     passed_all_tests = False
                     color_print(x=test_str, color='red')
-                    color_print(test_res, color='red')
             except:
                 test_str += 'Failed to test'
                 passed_all_tests = False
