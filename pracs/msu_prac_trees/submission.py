@@ -88,7 +88,7 @@ class DecisionTree(BaseEstimator):
         self._feature_types = feature_types
         self._tree = {}
         # Сюда будут сохраняться обученные таргет энкодеры категориальных фичей
-        self.target_encodings = {} # Dict[str, category_encoders.target_encoder.TargetEncoder]
+        self.target_encodings = {} # Dict[int<номер категориальной фичи>, category_encoders.target_encoder.TargetEncoder]
         self._criterion = criterion
         self.max_depth = max_depth
         self._min_samples_split = min_samples_split
