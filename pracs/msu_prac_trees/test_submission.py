@@ -8,8 +8,8 @@ try:
 except:
     color_print = lambda x, color='green': print(x)
 
-# from submission import *
-from submission_solved import *
+from submission import *
+# from submission_solved import *
 
 # Для тестирования обученных деревьев
 from deepdiff import DeepDiff
