@@ -139,7 +139,7 @@ class Himmelblau:
     def hess(self, x: np.ndarray):
         """
         Args:
-            x: numpy array of shape (2, 2)
+            x: numpy array of shape (2,)
         Returns:
             numpy array of shape (2, 2)
         """
