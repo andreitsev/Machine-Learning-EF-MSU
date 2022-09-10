@@ -81,7 +81,7 @@ class f3:
     def hess(self, x: np.ndarray):
         """
         Args:
-            x: numpy array of shape (2, 2)
+            x: numpy array of shape (2,)
         Returns:
             np.ndarray of shape (2, 2)
         """
