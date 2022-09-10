@@ -2,6 +2,11 @@ import os
 from os.path import join as p_join
 import numpy as np
 from fabulous import color as fb_color
+try:
+    from fabulous import color as fb_color
+    color_print = lambda text, color='green': print(getattr(fb_color, color)(text))
+except:
+    color_print = lambda text, color='green': print(text)
 
 from submission import *
 # from submission_empty import *
@@ -35,7 +40,8 @@ def test_f1_value():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'f1 __call__ method is correct!')
@@ -72,7 +78,8 @@ def test_f2_value():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'f2 __call__ method is correct!')
@@ -108,7 +115,8 @@ def test_f3_value():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'f3 __call__ method is correct!')
@@ -144,7 +152,8 @@ def test_SquaredL2Norm_value():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'SquaredL2Norm __call__ method is correct!')
@@ -179,6 +188,7 @@ def test_Himmelblau_value():
             passed = False
             decision += ' x'
         print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'Himmelblau __call__ method is correct!')
@@ -214,7 +224,8 @@ def test_Rosenbrok_value():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'Rosenbrok __call__ method is correct!')
@@ -250,7 +261,8 @@ def test_f1_grad():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'f1 grad method is correct!')
@@ -287,7 +299,8 @@ def test_f2_grad():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'f2 grad method is correct!')
@@ -324,7 +337,8 @@ def test_f3_grad():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'f3 grad method is correct!')
@@ -364,7 +378,8 @@ def test_SquaredL2Norm_grad():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'SquaredL2Norm grad method is correct!')
@@ -398,7 +413,8 @@ def test_Himmelblau_grad():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'Himmelblau grad method is correct!')
@@ -446,7 +462,8 @@ def test_Rosenbrok_grad():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'Rosenbrok grad method is correct!')
@@ -481,7 +498,8 @@ def test_f1_hess():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'f1 hess method is correct!')
@@ -516,7 +534,8 @@ def test_f2_hess():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'f2 hess method is correct!')
@@ -553,7 +572,8 @@ def test_f3_hess():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'f3 hess method is correct!')
@@ -592,7 +612,8 @@ def test_SquaredL2Norm_hess():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'SquaredL2Norm hess method is correct!')
@@ -629,7 +650,8 @@ def test_Himmelblau_hess():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'Himmelblau hess method is correct!')
@@ -691,7 +713,8 @@ def test_Rosenbrok_hess():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
+        color_print(decision, color='green' if passed else 'red')
 
     if passed:
         print(f'Rosenbrok hess method is correct!')
@@ -783,15 +806,18 @@ def test_minimize_function_gd():
             else:
                 passed = False
                 decision += ' x'
-            print(fb_color.green(decision) if passed else fb_color.red(decision))
+            #print(fb_color.green(decision) if passed else fb_color.red(decision))
+            color_print(decision, color='green' if passed else 'red')
 
         if passed:
             global_score += 5
 
         print(f"Total score: {global_score}", end='\n' * 2)
     except:
-        print(fb_color.red('Failed test_minimize_function_gd'))
-        print(fb_color.red("Total score:", global_score))
+        #print(fb_color.red('Failed test_minimize_function_gd'))
+        color_print('Failed test_minimize_function_gd', color='red')
+        #print(fb_color.red("Total score:", global_score))
+        color_print(f"Total score: {global_score}", color='red')
 
 def test_minimize_function_newtone():
     try:
@@ -878,15 +904,19 @@ def test_minimize_function_newtone():
             else:
                 passed = False
                 decision += ' x'
-            print(fb_color.green(decision) if passed else fb_color.red(decision))
+            #print(fb_color.green(decision) if passed else fb_color.red(decision))
+            color_print(decision, color='green' if passed else 'red')
+
 
         if passed:
             global_score += 5
 
         print(f"Total score: {global_score}", end='\n' * 2)
     except:
-        print(fb_color.red('Failed test_minimize_function_newtone'))
-        print(fb_color.red("Total score:", global_score))
+        #print(fb_color.red('Failed test_minimize_function_newtone'))
+        #print(fb_color.red("Total score:", global_score))
+        color_print('Failed test_minimize_function_newtone', color='red')
+        color_print(f"Total score: {global_score}", color='red')
 
 
 if __name__ == '__main__':
@@ -969,7 +999,10 @@ if __name__ == '__main__':
     test_minimize_function_gd()
     test_minimize_function_newtone()
     # Выводим Общий балл и записываем его в файл:
-    print(fb_color.bold(fb_color.magenta(f"Суммарный балл: {global_score}")))
+    try:
+        print(fb_color.bold(fb_color.magenta(f"Суммарный балл: {global_score}")))
+    except:
+        print(f"Суммарный балл: {global_score}")
     try:
         with open(p_join('/prac_folder/main_task_score.txt'), mode='w', encoding='utf-8') as f:
             f.writelines(str(global_score) + '\n')
