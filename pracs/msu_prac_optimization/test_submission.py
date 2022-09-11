@@ -187,7 +187,7 @@ def test_Himmelblau_value():
         else:
             passed = False
             decision += ' x'
-        print(fb_color.green(decision) if passed else fb_color.red(decision))
+        #print(fb_color.green(decision) if passed else fb_color.red(decision))
         color_print(decision, color='green' if passed else 'red')
 
     if passed:
