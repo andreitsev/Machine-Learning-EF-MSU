@@ -37,7 +37,7 @@
 
 #### Полезные ссылки:
 
-[Учебник по ML от ШАД](https://ml-handbook.ru/)
+[Учебник по ML от ШАД](https://academy.yandex.ru/handbook/ml)
 
 [Анализ малых данных](https://dyakonov.org/) - блог Дьяконова о машинном обучении
 
