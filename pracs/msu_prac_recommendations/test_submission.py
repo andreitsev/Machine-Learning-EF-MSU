@@ -7,6 +7,7 @@ except:
 from public_tests import (
    _compute_binary_relevance_test_cases,
    ap_at_k_test_cases,
+   map_at_k_test_cases
 )
 
 # from utils.metrics import (
@@ -64,6 +65,28 @@ def test_ap_at_k(add_score_for_this_test: float=1.0) -> float:
   return score
 
 
+def test_map_at_k(add_score_for_this_test: float=1.0) -> float:
+  score = 0
+  add_score_flag = True
+  test_cases = map_at_k_test_cases
+  for i, test_case in enumerate(test_cases, start=1):
+    print(f"Test {i}:")
+    computed_output = map_at_k(**test_case['args'])
+    decision = (
+        'passed ✓' if computed_output == test_case['expected_output'] else 'failed x'
+    )
+    color_print(decision, color='green' if decision == 'passed ✓' else 'red')
+    if decision == 'failed x':
+      add_score_flag = False
+      print(test_case)
+      print('got output:')
+      print(computed_output)
+      print()
+  if add_score_flag:
+     score += add_score_for_this_test
+  return score
+
+
 if __name__ == '__main__':
     total_score = 0
     print()
@@ -73,6 +96,10 @@ if __name__ == '__main__':
     print()
     print(f"Testing ap_at_k...")
     total_score += test_ap_at_k()
+    color_print(f"Текущий скор: {round(total_score, 3):,}", color='magenta')
+    print()
+    print(f"Testing map_at_k...")
+    total_score += test_map_at_k()
     color_print(f"Текущий скор: {round(total_score, 3):,}", color='magenta')
     print()
     color_print(f"Общий скор: {round(total_score, 3):,}", color='magenta')

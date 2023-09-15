@@ -168,3 +168,49 @@ ap_at_k_test_cases = [
           # res = 1/min(3, 5) * (1/5 + 2/5) = (3/5) * (1/3) = 1/5
       },
   ]
+
+map_at_k_test_cases = [
+      {
+          "args": {
+              "recommended_items_lists": [[1]],
+              "true_items_lists": [[1, 2, 3]],
+              "k": 1
+          },
+          "expected_output": 1
+      },
+      {
+          "args": {
+              "recommended_items_lists": [
+                    [4, 5, 6],
+                    [4, 5, 3]
+              ],
+              "true_items_lists": [
+                    [1, 2, 3],
+                    [1, 2, 3]
+              ],
+              "k": 3
+          },
+          "expected_output": (0 + 1/9) / 2
+      },
+      {
+          "args": {
+              "recommended_items_lists": [
+                    [4, 5, 6],
+                    [4, 5, 3],
+                    [4, 5, 3]
+              ],
+              "true_items_lists": [
+                    [1, 2, 3],
+                    [1, 2, 3],
+                    [0, 1, 2, 3]
+              ],
+              "k": 3
+          },
+          "expected_output": (0 + 1/9 + 1/9) / 3
+      },
+  ]
+
+
+
+
+

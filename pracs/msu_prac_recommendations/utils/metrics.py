@@ -19,9 +19,11 @@ def ap_at_k(
   ...
 
 
+
 def map_at_k(
     recommended_items_lists: List[List[int]],
     true_items_lists: List[List[int]],
+    k: int,
 ) -> float:
   """
   Computes ap@k for all buyers
