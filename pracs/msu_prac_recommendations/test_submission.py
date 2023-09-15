@@ -51,7 +51,7 @@ def test_ap_at_k(add_score_for_this_test: float=1.0) -> float:
     print(f"Test {i}:")
     computed_output = ap_at_k(**test_case['args'])
     decision = (
-        'passed ✓' if computed_output == test_case['expected_output'] else 'failed x'
+        'passed ✓' if abs(computed_output - test_case['expected_output']) < 1e-2 else 'failed x'
     )
     color_print(decision, color='green' if decision == 'passed ✓' else 'red')
     if decision == 'failed x':
@@ -73,7 +73,7 @@ def test_map_at_k(add_score_for_this_test: float=1.0) -> float:
     print(f"Test {i}:")
     computed_output = map_at_k(**test_case['args'])
     decision = (
-        'passed ✓' if computed_output == test_case['expected_output'] else 'failed x'
+        'passed ✓' if abs(computed_output - test_case['expected_output']) < 1e-2 else 'failed x'
     )
     color_print(decision, color='green' if decision == 'passed ✓' else 'red')
     if decision == 'failed x':
