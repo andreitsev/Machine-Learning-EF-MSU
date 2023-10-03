@@ -1,4 +1,12 @@
+import pandas as pd
 
+from utils.models_solved import (
+    ConstantRecommender
+)
+# from utils.models import ConstantRecommender
+
+# const_recommender = lambda const: ConstantRecommender(ratings=train_ratings, const=const)
+# const_recommender
 
 _compute_binary_relevance_test_cases = [
     {
@@ -211,6 +219,70 @@ map_at_k_test_cases = [
   ]
 
 
+get_test_recommendations_test_cases = [
+    {   
+        "model_type": ConstantRecommender,
+        "init_args": {
+            #     """
+            #     train_ratings:
+            #                   userId
+            #                 \  0  |  1  |   2  |  3  |  4  |  5  |  6  | 
+            #    trackId    0 |     |     |  x   |  x  |     |     |  x  |
+            #                 |_____|_____|______|_____|_____|_____|_____| 
+            #               1 |  x  |     |  x   |     |     |     |     | 
+            #                 |_____|_____|______|_____|_____|_____|_____|
+            #               2 |  x  |  x  |  x   |  x  |     |  x  |     | 
+            #                 |_____|_____|______|_____|_____|_____|_____|
+            #               3 |     |     |  x   |     |     |  x  |     | 
+            #                 |_____|_____|______|_____|_____|_____|_____|
+            #               4 |  x  |  x  |      |  x  |  x  |  x  |     | 
+            #                 |_____|_____|______|_____|_____|_____|_____|
+            #               5 |     |  x  |  x   |     |  x  |     |  x  | 
+            #                 |_____|_____|______|_____|_____|_____|_____|
+            #               6 |  x  |     |  x   |  x  |     |     |  x  | 
+            #                 |_____|_____|______|_____|_____|_____|_____|
+            # test_ratings:      
+            #               7 |     |     |      |     |     |     |     | 
+            #                 |_____|_____|______|_____|_____|_____|_____|
+
+                      
+            # """
+            "const": 1,
+            'ratings': pd.DataFrame([
+                [0, 1],
+                [0, 2],
+                [0, 4],
+                [0, 6],
+                [1, 2],
+                [1, 4],
+                [1, 5],
+                [2, 0],
+                [2, 1],
+                [2, 2],
+                [2, 3],
+                [2, 5],
+                [2, 6],
+                [3, 0],
+                [3, 2],
+                [3, 4],
+                [3, 6],
+                [4, 4],
+                [4, 5],
+                [5, 2],
+                [5, 3], 
+                [5, 4],
+                [6, 0],
+                [6, 5], 
+                [6, 6]
+            ], columns=['userId', 'trackId']),
+        },
+        "get_test_recommendations_args": {
+            "test_idxs": [],
+            "k": 4,
+        },
+        "expected_output": []
+    }
+]
 
 
 
