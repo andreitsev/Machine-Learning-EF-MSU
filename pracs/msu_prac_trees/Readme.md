@@ -9,6 +9,8 @@ https://www.overleaf.com/read/yrwdkbnyywtv
 
 [Инструкция](https://www.evernote.com/shard/s596/client/snv?noteGuid=ec85951e-7bd1-b108-b7cc-7a1fea9ccb23&noteKey=4ee1a4a181642b77ff16ab69dd0b97e4&sn=https%3A%2F%2Fwww.evernote.com%2Fshard%2Fs596%2Fsh%2Fec85951e-7bd1-b108-b7cc-7a1fea9ccb23%2F4ee1a4a181642b77ff16ab69dd0b97e4&title=%25D0%25A0%25D0%25B0%25D0%25B1%25D0%25BE%25D1%2582%25D0%25B0%2B%25D1%2581%2BDocker%2B%25D1%2587%25D0%25B5%25D1%2580%25D0%25B5%25D0%25B7%2BWSL)
 
+__Внимание!__ в инструкции указан запуск образа с предыдущего прака! Правильный образ указан в инструкции в шаге 6
+
 Альтернативный вариант:
 
 [Использовать gcloud shell](https://cloud.google.com/blog/products/it-ops/introducing-the-ability-to-connect-to-cloud-shell-from-any-terminal)
