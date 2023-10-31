@@ -4,6 +4,8 @@ import numpy as np
 from numpy.typing import NDArray
 import pandas as pd
 
+from utils.distances import jaccard_sim
+
 class BaseModel:
     def __init__(self, ratings: pd.DataFrame):
         self.ratings = ratings
@@ -37,3 +39,31 @@ class BaseModel:
         # your code here
         pass
         
+
+class RandomRecommender(BaseModel):
+    def __init__(self, ratings):
+        super().__init__(ratings)
+
+    def recommend(self, uid: int):
+        unique_items = self.ratings['trackId'].unique()
+        predictions_u = np.random.permutation(unique_items)
+        return predictions_u
+    
+
+class User2User(BaseModel):
+    def __init__(self, ratings):
+        super().__init__(ratings)
+
+        self.similarity_func = jaccard_sim
+        self.alpha = 0.02
+
+    def similarity(self, user_vector: np.array):
+        """
+        user_vector: [n_items]
+        """
+        # your code here:
+        pass
+
+    def recommend(self, uid: int):
+        # your code here: 
+        pass
