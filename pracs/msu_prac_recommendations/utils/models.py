@@ -1,10 +1,12 @@
-from typing import List
+from typing import Callable, List
 
 import numpy as np
 from numpy.typing import NDArray
 import pandas as pd
 
 from utils.distances import jaccard_sim
+
+similarityFuncType = Callable[[NDArray[float], NDArray[float]], NDArray[float]]
 
 class BaseModel:
     def __init__(self, ratings: pd.DataFrame):
@@ -35,7 +37,7 @@ class BaseModel:
 
         return new_preds
 
-    def get_test_recommendations(self, test_idxs: List[int], k: int) -> NDarray[NDArray[int]]:
+    def get_test_recommendations(self, test_idxs: List[int], k: int) -> NDArray[int]:
         # your code here
         pass
         
@@ -51,15 +53,19 @@ class RandomRecommender(BaseModel):
     
 
 class User2User(BaseModel):
-    def __init__(self, ratings):
+    def __init__(self, ratings, similarity_func: similarityFuncType=jaccard_sim, alpha: float=0.02):
         super().__init__(ratings)
 
-        self.similarity_func = jaccard_sim
-        self.alpha = 0.02
+        self.similarity_func = similarity_func
+        self.alpha = alpha
 
-    def similarity(self, user_vector: np.array):
+    def similarity(self, user_vector: NDArray[float]) -> NDArray[float]:
         """
-        user_vector: [n_items]
+        Args:
+            user_vector: vector of lenght - number unique items
+        Returns:
+            user_user_similarities_array: vector of length - number of unique 
+                users (including user himself)
         """
         # your code here:
         pass
