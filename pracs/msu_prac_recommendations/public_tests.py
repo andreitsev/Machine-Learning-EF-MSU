@@ -17,31 +17,25 @@ def _process_ratings_array(arr: np.array) -> pd.DataFrame:
     return processed_df
 
 
-# ratings_df1 = (
-#         pd.DataFrame({
-#             0: [[0, 2, 5]],
-#             1: [[2, 3, 4]],
-#             2: [[1, 2, 4]],
-#             3: [[3, 4, 6]],
-#             4: [[1, 2, 3, 5, 6]],
-#             5: [[0, 1]],
-#         }).T
-#         .rename(columns={0: 'trackId'})
-#         .explode('trackId')
-#         .reset_index()
-#         .rename(columns={'index': 'userId'})
-#         .applymap(lambda x: int(x))
-#     )
-
 ratings_arr1 = np.array([
     #       \   trackId
     # userId \
-             [0, 1, 1, 0, 1, 1, 1],
-             [1, 0, 1, 1, 0, 0, 0],
-             [0, 0, 0, 0, 1, 0, 1],
-             [1, 1, 1, 1, 0, 0, 0],
-             [1, 1, 0, 0, 1, 1, 0],
-             [1, 0, 0, 0, 0, 1, 0]
+             [0, 1, 1, 0, 1, 1, 1], # user0
+             [1, 0, 1, 1, 0, 0, 0], # user1
+             [0, 0, 0, 0, 1, 0, 1], # user2
+             [1, 1, 1, 1, 0, 0, 0], # user3
+             [1, 1, 0, 0, 1, 1, 0], # user4
+             [1, 0, 0, 0, 0, 1, 0], # user5
+])
+
+ratings_arr2 = np.array([
+    #       \   trackId
+    # userId \
+             [0, 1, 1, 0], # user0
+             [1, 0, 1, 1], # user1
+             [0, 1, 0, 0], # user2
+             [1, 1, 1, 1], # user3
+             [1, 1, 0, 0], # user4
 ])
 
 
@@ -441,51 +435,103 @@ user2user_similarity_output_length_test_cases = [
     },
 ]
 
-
-# user2user_similarity_test_cases = [
-#     #         \\
-#     #          \\
-#     #           \\ items              
-#     #    users   \\            0        1        2        3        4        5       6     
-#     #  ---------------------------------------------------------------------------------   
-#     #                     |       ||       ||       ||       ||       ||       ||       |       
-#     #                  0  |   ✓   ||       ||   ✓   ||       ||       ||   ✓   ||       |
-#     #                     |       ||       ||       ||       ||       ||       ||       |  
-#     #                     -------------------------------------------------------------
-#     #                     |       ||       ||       ||       ||       ||       ||       |
-#     #                  1  |       ||       ||   ✓   ||   ✓   ||   ✓   ||       ||       |
-#     #                     |       ||       ||       ||       ||       ||       ||       |  
-#     #                     -------------------------------------------------------------
-#     #                     |       ||       ||       ||       ||       ||       ||       |
-#     #                  2  |       ||   ✓   ||   ✓   ||       ||   ✓   ||       ||       |
-#     #                     |       ||       ||       ||       ||       ||       ||       |  
-#     #                     -------------------------------------------------------------
-#     #                     |       ||       ||       ||       ||       ||       ||       |
-#     #                  3  |       ||       ||       ||   ✓   ||   ✓   ||       ||   ✓   |
-#     #                     |       ||       ||       ||       ||       ||       ||       |  
-#     #                     -------------------------------------------------------------
-#     #                     |       ||       ||       ||       ||       ||       ||       |    
-#     #                  4  |       ||  ✓    ||   ✓   ||   ✓   ||       ||   ✓   ||   ✓   |    
-#     #                     |       ||       ||       ||       ||       ||       ||       |     
-#     #                     -------------------------------------------------------------   
-#     #                     |       ||       ||       ||       ||       ||       ||       |    
-#     #                  5  |   ✓   ||   ✓   ||       ||       ||       ||       ||       |    
-#     #                     |       ||       ||       ||       ||       ||       ||       |     
-#     #                     -------------------------------------------------------------   
-#     {
-#         "init_args": {
-#             "ratings": ratings_df1, 
-#             "similarity_func": 'jaccard_sim',
-#             "alpha": 0.02,
-#         },
-#         "similarity_args": {
-#             # user 1
-#             "user_vector": np.array([0, 0, 1, 1, 1, 0, 0])
-#         },
-#         "expected_output": np.array([
-
-#         ])
-#     }
-# ]
+user2user_similarity_test_cases = [
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([0, 0, 1, 1, 1, 0, 0])
+        },
+        "expected_output": np.array([2/6, 2/4, 1/4, 2/5, 1/6, 0/5]),
+        # Explanation:
+        #
+        # Ratings matrix in this test is:
+        #     user0: [0, 1, 1, 0, 1, 1, 1],
+        #     user1: [1, 0, 1, 1, 0, 0, 0],
+        #     user2: [0, 0, 0, 0, 1, 0, 1],
+        #     user3: [1, 1, 1, 1, 0, 0, 0],
+        #     user4: [1, 1, 0, 0, 1, 1, 0],
+        #     user5: [1, 0, 0, 0, 0, 1, 0],
+        #
+        # So, similarities are:
+        #
+        # jaccard_sim(
+        #     request vector: [0, 0, 1, 1, 1, 0, 0],
+        #     user0 vector:   [0, 1, 1, 0, 1, 1, 1]
+        # ) = 
+        # |request vector INTERSEC user0 vector| / |request vector UNION user0 vector| =
+        # 2 / 6 = 0.33
+        #
+        # jaccard_sim(
+        #     request vector: [0, 0, 1, 1, 1, 0, 0],
+        #     user1 vector:   [1, 0, 1, 1, 0, 0, 0]
+        # ) = 2 / 4 = 0.5
+        #
+        # ...
+        #
+        # jaccard_sim(
+        #     request vector: [0, 0, 1, 1, 1, 0, 0],
+        #     user5 vector:   [1, 0, 0, 0, 0, 1, 0]
+        # ) = 0 / 5 = 0
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([0, 1, 1, 0, 1, 1, 1])
+        },
+        "expected_output": np.array([5/5, 1/7, 2/5, 2/7, 3/6, 1/6]),
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.1,
+        },
+        "similarity_args": {
+            "user_vector": np.array([0, 1, 1, 0, 1, 1, 1])
+        },
+        "expected_output": np.array([5/5, 1/7, 2/5, 2/7, 3/6, 1/6]),
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1[:3]), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([1, 0, 1, 1, 0, 0, 0])
+        },
+        "expected_output": np.array([1/7, 3/3, 0/5]),
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr2), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([1, 0, 1, 1])
+        },
+        "expected_output": np.array([1/4, 3/3, 0/4, 3/4, 1/4]),
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr2[1:-1]), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([1, 1, 0, 1])
+        },
+        "expected_output": np.array([2/4, 1/3, 3/4]),
+    },
+]
 
 

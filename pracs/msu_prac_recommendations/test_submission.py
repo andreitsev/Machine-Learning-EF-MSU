@@ -12,6 +12,7 @@ from public_tests import (
   #  get_test_recommendations_test_cases,
    jaccard_sim_test_cases,
    user2user_similarity_output_length_test_cases,
+   user2user_similarity_test_cases
 )
 
 # from utils.metrics import (
@@ -171,14 +172,8 @@ def test_user2user_similarity_output_length(add_score_for_this_test: float=1.0) 
   for i, test_case in enumerate(test_cases, start=1):
     try:
       print(f"Test {i}:")
-      # print("test_case:")
-      # print(test_case)
       user2user_model = User2User(**test_case['init_args'])
-      # print("user2user_model:")
-      # print(user2user_model)
       computed_output = len(user2user_model.similarity(**test_case['similarity_args']))
-      # print(f"computed_output:")
-      # print(computed_output)
       decision = (
           'passed ✓' if computed_output == test_case['expected_output'] else 'failed x'
       )
@@ -197,31 +192,34 @@ def test_user2user_similarity_output_length(add_score_for_this_test: float=1.0) 
     score += add_score_for_this_test
   return score
 
-# def test_user2user_similarity(add_score_for_this_test: float=1.0) -> float:
-#   score = 0
-#   add_score_flag = True
-#   test_cases = jaccard_sim_test_cases
-#   for i, test_case in enumerate(test_cases, start=1):
-#     try:
-#       print(f"Test {i}:")
-#       computed_output = jaccard_sim(**test_case['args'])
-#       decision = (
-#           'passed ✓' if all(np.abs(computed_output - test_case['expected_output']) < 1e-2) else 'failed x'
-#       )
-#       color_print(decision, color='green' if decision == 'passed ✓' else 'red')
-#       if decision == 'failed x':
-#         add_score_flag = False
-#         print(test_case)
-#         print('got output:')
-#         print(computed_output)
-#         print()
-#     except Exception as e:
-#       add_score_flag = False
-#       color_print(f"Failed to test test_jaccard_sim for test {i}!", color='red')
-#       print(e, end='\n'*2)
-#   if add_score_flag:
-#     score += add_score_for_this_test
-#   return score
+def test_user2user_similarity(add_score_for_this_test: float=1.0) -> float:
+  score = 0
+  add_score_flag = True
+  test_cases = user2user_similarity_test_cases
+  for i, test_case in enumerate(test_cases, start=1):
+    try:
+      print(f"Test {i}:")
+      user2user_model = User2User(**test_case['init_args'])
+      computed_output = user2user_model.similarity(**test_case['similarity_args'])
+      decision = (
+          'passed ✓' if np.allclose(test_case['expected_output'], computed_output, atol=1e-2) else 'failed x'
+      )
+      color_print(decision, color='green' if decision == 'passed ✓' else 'red')
+      if decision == 'failed x':
+        add_score_flag = False
+        print(test_case)
+        print('got output:')
+        print(computed_output)
+        print()
+    except Exception as e:
+      add_score_flag = False
+      color_print(f"Failed to test test_user2user_similarity_output_length for test {i}!", color='red')
+      print(e, end='\n'*2)
+  if add_score_flag:
+    score += add_score_for_this_test
+  return score
+
+
 
 if __name__ == '__main__':
     total_score = 0
@@ -274,6 +272,17 @@ if __name__ == '__main__':
       color_print(f"+{add_score_for_this_test} балла(ов)", color='magenta' if add_score_for_this_test > 0 else 'red')
     except Exception as e:
        color_print(f"Failed to test test_user2user_similarity_output_length", color='red')
+       print(e, end='\n'*2)
+    color_print(f"Текущий скор: {round(total_score, 3):,}\n", color='magenta')
+
+
+    print(f"\nTesting user2user_similarity...")
+    try:
+      add_score_for_this_test = test_user2user_similarity()
+      total_score += add_score_for_this_test
+      color_print(f"+{add_score_for_this_test} балла(ов)", color='magenta' if add_score_for_this_test > 0 else 'red')
+    except Exception as e:
+       color_print(f"Failed to test test_user2user_similarity", color='red')
        print(e, end='\n'*2)
     color_print(f"Текущий скор: {round(total_score, 3):,}\n", color='magenta')
     
