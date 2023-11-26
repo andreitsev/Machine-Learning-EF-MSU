@@ -6,6 +6,44 @@ from utils.models_solved import (
 )
 # from utils.models import ConstantRecommender
 
+## TODO uncomment utils.distances and remove utils.distances_solved 
+# from utils.distances import jaccard_sim
+from utils.distances_solved import jaccard_sim
+
+
+def _process_ratings_array(arr: np.array) -> pd.DataFrame:
+    userId, trackId = np.where(arr > 0)
+    processed_df = pd.DataFrame({'userId': userId, 'trackId': trackId})
+    return processed_df
+
+
+# ratings_df1 = (
+#         pd.DataFrame({
+#             0: [[0, 2, 5]],
+#             1: [[2, 3, 4]],
+#             2: [[1, 2, 4]],
+#             3: [[3, 4, 6]],
+#             4: [[1, 2, 3, 5, 6]],
+#             5: [[0, 1]],
+#         }).T
+#         .rename(columns={0: 'trackId'})
+#         .explode('trackId')
+#         .reset_index()
+#         .rename(columns={'index': 'userId'})
+#         .applymap(lambda x: int(x))
+#     )
+
+ratings_arr1 = np.array([
+    #       \   trackId
+    # userId \
+             [0, 1, 1, 0, 1, 1, 1],
+             [1, 0, 1, 1, 0, 0, 0],
+             [0, 0, 0, 0, 1, 0, 1],
+             [1, 1, 1, 1, 0, 0, 0],
+             [1, 1, 0, 0, 1, 1, 0],
+             [1, 0, 0, 0, 0, 1, 0]
+])
+
 
 _compute_binary_relevance_test_cases = [
     {
@@ -311,5 +349,143 @@ jaccard_sim_test_cases = [
     },
 ]
 
+
+user2user_similarity_output_length_test_cases = [
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([0, 0, 1, 1, 1, 0, 0])
+        },
+        "expected_output": 6,
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1[:-1]), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([0, 0, 1, 1, 1, 0, 0])
+        },
+        "expected_output": 5,
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1[1:]), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([0, 0, 1, 1, 1, 0, 0])
+        },
+        "expected_output": 5,
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1[:, :-1]), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([0, 0, 1, 1, 1, 0])
+        },
+        "expected_output": 6,
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1[:, 1:-1]), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([0, 1, 1, 1, 0])
+        },
+        "expected_output": 6,
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1[1:, 1:-1]), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([0, 1, 1, 1, 0])
+        },
+        "expected_output": 5,
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1[:3, 1:-1]), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([0, 1, 1, 1, 0])
+        },
+        "expected_output": 3,
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1[1:3, [2, 3, 6]]), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.02,
+        },
+        "similarity_args": {
+            "user_vector": np.array([0, 1, 1])
+        },
+        "expected_output": 2,
+    },
+]
+
+
+# user2user_similarity_test_cases = [
+#     #         \\
+#     #          \\
+#     #           \\ items              
+#     #    users   \\            0        1        2        3        4        5       6     
+#     #  ---------------------------------------------------------------------------------   
+#     #                     |       ||       ||       ||       ||       ||       ||       |       
+#     #                  0  |   ✓   ||       ||   ✓   ||       ||       ||   ✓   ||       |
+#     #                     |       ||       ||       ||       ||       ||       ||       |  
+#     #                     -------------------------------------------------------------
+#     #                     |       ||       ||       ||       ||       ||       ||       |
+#     #                  1  |       ||       ||   ✓   ||   ✓   ||   ✓   ||       ||       |
+#     #                     |       ||       ||       ||       ||       ||       ||       |  
+#     #                     -------------------------------------------------------------
+#     #                     |       ||       ||       ||       ||       ||       ||       |
+#     #                  2  |       ||   ✓   ||   ✓   ||       ||   ✓   ||       ||       |
+#     #                     |       ||       ||       ||       ||       ||       ||       |  
+#     #                     -------------------------------------------------------------
+#     #                     |       ||       ||       ||       ||       ||       ||       |
+#     #                  3  |       ||       ||       ||   ✓   ||   ✓   ||       ||   ✓   |
+#     #                     |       ||       ||       ||       ||       ||       ||       |  
+#     #                     -------------------------------------------------------------
+#     #                     |       ||       ||       ||       ||       ||       ||       |    
+#     #                  4  |       ||  ✓    ||   ✓   ||   ✓   ||       ||   ✓   ||   ✓   |    
+#     #                     |       ||       ||       ||       ||       ||       ||       |     
+#     #                     -------------------------------------------------------------   
+#     #                     |       ||       ||       ||       ||       ||       ||       |    
+#     #                  5  |   ✓   ||   ✓   ||       ||       ||       ||       ||       |    
+#     #                     |       ||       ||       ||       ||       ||       ||       |     
+#     #                     -------------------------------------------------------------   
+#     {
+#         "init_args": {
+#             "ratings": ratings_df1, 
+#             "similarity_func": 'jaccard_sim',
+#             "alpha": 0.02,
+#         },
+#         "similarity_args": {
+#             # user 1
+#             "user_vector": np.array([0, 0, 1, 1, 1, 0, 0])
+#         },
+#         "expected_output": np.array([
+
+#         ])
+#     }
+# ]
 
 
