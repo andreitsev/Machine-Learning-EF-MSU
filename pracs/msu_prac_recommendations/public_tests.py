@@ -535,3 +535,80 @@ user2user_similarity_test_cases = [
 ]
 
 
+user2user_get_items_scores_test_cases = [
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.3,
+        },
+        "get_items_scores_args": {
+            "uid": 0
+        },
+        "expected_output": np.array([5/9, 5/9, 0, 0, 9/9, 5/9, 4/9]),
+        # Explanation:
+        # Ratings matrix:
+        #      [0, 1, 1, 0, 1, 1, 1], # user0     jaccard_sim(0, 0) = 0 (similarity with myself should be 0)
+        #      [1, 0, 1, 1, 0, 0, 0], # user1     jaccard_sim(0, 1) = 1/7 = 0.143
+        #      [0, 0, 0, 0, 1, 0, 1], # user2     jaccard_sim(0, 2) = 2/5 = 0.4
+        #      [1, 1, 1, 1, 0, 0, 0], # user3     jaccard_sim(0, 3) = 2/7 = 0.286
+        #      [1, 1, 0, 0, 1, 1, 0], # user4     jaccard_sim(0, 4) = 3/6 = 0.5
+        #      [1, 0, 0, 0, 0, 1, 0], # user5     jaccard_sim(0, 5) = 1/6 = 0.167
+
+        # taking only users, that are closer than alpha (in this case 0.3). So here we consider 
+        # user2 and user4 to be similar to user0, so predicted ratings (\hat{r}_{ui}) here would be:
+        
+        #   2/5 * [0, 0, 0, 0, 1, 0, 1] 
+        # + 
+        #   3/6 * [1, 1, 0, 0, 1, 1, 0]
+        # / 
+        #  (2/5 + 3/6)
+        # =
+        #  [0.5, 0.5, 0. , 0. , 0.9, 0.5, 0.4] / 0.9
+        # =
+        #  [5/9, 5/9, 0,   0,   9/9, 5/9, 4/9]
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.288,
+        },
+        "get_items_scores_args": {
+            "uid": 0
+        },
+        "expected_output": np.array([5/9, 5/9, 0, 0, 9/9, 5/9, 4/9]),
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.28,
+        },
+        "get_items_scores_args": {
+            "uid": 0
+        },
+        "expected_output": np.array([55/83, 55/83, 20/83, 20/83, 63/83, 35/83, 28/83]),
+        # Explanation:
+        # Ratings matrix:
+        #      [0, 1, 1, 0, 1, 1, 1], # user0     jaccard_sim(0, 0) = 0 (similarity with myself should be 0)
+        #      [1, 0, 1, 1, 0, 0, 0], # user1     jaccard_sim(0, 1) = 1/7 = 0.143
+        #      [0, 0, 0, 0, 1, 0, 1], # user2     jaccard_sim(0, 2) = 2/5 = 0.4
+        #      [1, 1, 1, 1, 0, 0, 0], # user3     jaccard_sim(0, 3) = 2/7 = 0.286
+        #      [1, 1, 0, 0, 1, 1, 0], # user4     jaccard_sim(0, 4) = 3/6 = 0.5
+        #      [1, 0, 0, 0, 0, 1, 0], # user5     jaccard_sim(0, 5) = 1/6 = 0.167
+        # taking only users, that are closer than alpha (in this case 0.28). So here we consider 
+        # user2, user3 and user4 to be similar to user0, so predicted ratings (\hat{r}_{ui}) here would be:
+        #   2/5 * [0, 0, 0, 0, 1, 0, 1] 
+        # + 
+        #   3/6 * [1, 1, 0, 0, 1, 1, 0]
+        # +
+        #   2/7 * [1, 1, 1, 1, 0, 0, 0]
+        # / 
+        #  (2/5 + 3/6 + 2/7)
+        # =
+        #  [55/83, 55/83, 20/83, 20/83, 63/83, 35/83, 28/83]
+    },
+]
+
+
