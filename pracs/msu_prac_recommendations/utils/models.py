@@ -59,17 +59,29 @@ class User2User(BaseModel):
         self.similarity_func = similarity_func
         self.alpha = alpha
 
-    def similarity(self, user_vector: NDArray[float]) -> NDArray[float]:
-        """
+    def similarity(self, user_vector: NDArray[int]) -> NDArray[float]:
+        """Computes similarities between user_vector and all vectors in self.R
         Args:
-            user_vector: vector of lenght - number unique items
+            user_vector: vector of ratings, user has given to all tracks
         Returns:
-            user_user_similarities_array: vector of length - number of unique 
-                users (including user himself)
+            vector of simillarities between this user and all users in self.R
+        """
+        # your code here:
+        pass
+    
+    def get_items_scores(self, uid: int) -> NDArray[float]:
+        """Computes scores \hat{r}_{ui} for all items in rating matrix for
+        a particular user uid
+
+        Args:
+            uid (int): index of user from rating matrix
+        Returns:
+            scores_u (NDArray[float]): array of scores for all items
         """
         # your code here:
         pass
 
     def recommend(self, uid: int):
-        # your code here: 
-        pass
+        scores_u = self.get_items_scores(uid=uid)
+        predictions_u = np.array([idx for idx in np.argsort(scores_u)[::-1]])
+        return predictions_u
