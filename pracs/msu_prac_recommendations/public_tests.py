@@ -609,6 +609,50 @@ user2user_get_items_scores_test_cases = [
         # =
         #  [55/83, 55/83, 20/83, 20/83, 63/83, 35/83, 28/83]
     },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.1,
+        },
+        "get_items_scores_args": {
+            "uid": 2
+        },
+        "expected_output": np.array([1/3, 1, 2/3, 0, 1, 1, 2/3])
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.15,
+        },
+        "get_items_scores_args": {
+            "uid": 2
+        },
+        "expected_output": np.array([1/3, 1, 2/3, 0, 1, 1, 2/3])
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr1), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.12,
+        },
+        "get_items_scores_args": {
+            "uid": 5
+        },
+        "expected_output": np.array([0.8507, 0.7761, 0.5522, 0.403 , 0.597 , 0.597 , 0.1493])
+    },
+    {
+        "init_args": {
+            "ratings": _process_ratings_array(ratings_arr2), 
+            "similarity_func": jaccard_sim,
+            "alpha": 0.15,
+        },
+        "get_items_scores_args": {
+            "uid": 0
+        },
+        "expected_output": np.array([0.6842, 0.8421, 0.4737, 0.4737])
+    }
 ]
 
 
