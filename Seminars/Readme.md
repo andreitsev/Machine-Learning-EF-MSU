@@ -7,7 +7,7 @@
 
 [Seminar_word2vec](https://nbviewer.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Seminars/Seminar_word2vec.ipynb)
 
-[Seminar_recsys]()
+[Seminar_recsys](https://nbviewer.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Seminars/Seminar_recsys.ipynb)
 
 [Seminar_gensim_LDA](https://nbviewer.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Seminars/Seminar_gensim_LDA.ipynb)
 
