@@ -1,3 +1,10 @@
+Осень 2024
+
+Новостной чат: https://t.me/+P6MwshLoPLU1ZTdi
+
+Чат для общения: https://t.me/+V7i2qVkisRk2NWQ6
+
+
 ## Содержание
 
 [comment]: <> (6&#41; [Градиентный бустинг]&#40;https://nbviewer.jupyter.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Lectures/Градиентный%20бустинг.ipynb&#41;)
