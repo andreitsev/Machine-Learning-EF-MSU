@@ -1,7 +1,6 @@
 import os
 from os.path import join as p_join
 import numpy as np
-from fabulous import color as fb_color
 try:
     from fabulous import color as fb_color
     color_print = lambda text, color='green': print(getattr(fb_color, color)(text))
