@@ -60,6 +60,8 @@ docker run --rm -it -e password=<пароль от blackboxfunction.zip> -v $PWD
 docker run --rm -it -v $PWD:/tmp mlefmsu/prac_optimization /bin/bash -c 'cp -r ./tmp/* ./prac_folder; cd ./prac_folder; python3 unzip_blackboxfunction.py; bash test.sh; if [[ -f main_task_score.txt ]]; then cp main_task_score.txt ../tmp/; fi; if [[ -f blackbox_function_score.txt ]]; then cp blackbox_function_score.txt ../tmp/; fi'                                                      
 ```
 
+Так же, если у вас Mac на M-чипе (не Intel), то стоит добавить флаг ```--platform=linux/amd64```
+
 [comment]: <> (![test example]&#40;/Users/antonandreytsev/Desktop/Machine-Learning-EF-MSU/pracs/msu_prac_optimization/pictures/test.png&#41;)
 
 <img width="1417" alt="test" src="https://user-images.githubusercontent.com/27732957/134806579-8b980d80-a7bd-4a9c-b8cc-8db79fce6a7f.png">
