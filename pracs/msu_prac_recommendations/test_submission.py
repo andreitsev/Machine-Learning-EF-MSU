@@ -1,4 +1,5 @@
 from functools import partial
+from pprint import pprint
 
 import numpy as np
 try:
@@ -23,16 +24,16 @@ from public_tests import (
 #    ap_at_k,
 #    map_at_k
 # )
-from utils.metrics_solved import (
+from utils_solved.metrics import (
    _compute_binary_relevance,
    ap_at_k,
    map_at_k
 )
 # from utils.distances import jaccard_sim
-from utils.distances_solved import jaccard_sim
+from utils_solved.distances import jaccard_sim
 
 # from utils.models import User2User
-from utils.models_solved import User2User
+from utils_solved.models import User2User
 
 
 def test__compute_binary_relevance(add_score_for_this_test: float=1.0) -> float:

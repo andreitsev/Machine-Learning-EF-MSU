@@ -1,14 +1,16 @@
+from fractions import Fraction
+
 import numpy as np
 import pandas as pd
 
-from utils.models_solved import (
-    ConstantRecommender
-)
+# from utils_solved.models import (
+#     ConstantRecommender
+# )
 # from utils.models import ConstantRecommender
 
 ## TODO uncomment utils.distances and remove utils.distances_solved 
 # from utils.distances import jaccard_sim
-from utils.distances_solved import jaccard_sim
+from utils_solved.distances import jaccard_sim
 
 
 def _process_ratings_array(arr: np.array) -> pd.DataFrame:
@@ -112,11 +114,18 @@ ap_at_k_test_cases = [
               "recommended_items_list": [2, 3, 5, 6, 7],
               "true_items_list": [1, 2, 3, 4],
               "k": 4
-          },
-          "expected_output": 0.75/4
-          # binary_rel = [1, 1, 0, 0, 0]
-          # cumrel = [1, 2, 2, 2, 2] / 4 = [0.25, 0.5, 0.5, 0.5, 0.5]
-          # res = 1/min(4, 4) * (0.25*1 + 0.5*1) = 0.75/4
+          },          
+          "expected_output": round(
+              float(
+                  Fraction(1, 4)*(
+                      Fraction(1, 1)
+                      + Fraction(2, 2)
+                      + Fraction(2, 3)
+                      + Fraction(2, 4)
+                  )
+              ), 
+              6
+            )
       },
       {
           "args": {
@@ -125,20 +134,23 @@ ap_at_k_test_cases = [
               "k": 3
           },
           "expected_output": 0
-          # binary_rel = [0, 0, 0]
-          # cumrel = [0, 0, 0] / 3 = [0, 0, 0]
-          # res = 1/min(3, 3) * 0 = 0
       },
       {
           "args": {
               "recommended_items_list": [4, 5, 3],
               "true_items_list": [1, 2, 3],
               "k": 3
-          },
-          "expected_output": 1/9
-          # binary_rel = [0, 0, 1]
-          # cumrel = [0, 0, 1] / 3 = [0, 0, 1/3]
-          # res = 1/min(3, 3) * 1/3 = 1/9
+          },          
+          "expected_output": round(
+              float(
+                  Fraction(1, 3)*(
+                      Fraction(0, 1)
+                      + Fraction(0, 2)
+                      + Fraction(1, 3)
+                  )
+              ), 
+              6
+            )
       },
       {
           "args": {
@@ -146,21 +158,33 @@ ap_at_k_test_cases = [
               "true_items_list": [0, 1, 2, 3],
               "k": 3
           },
-          "expected_output": 1/9
-          # binary_rel = [0, 0, 1]
-          # cumrel = [0, 0, 1] / 3 = [0, 0, 1/3]
-          # res = 1/min(4, 3) * 1/3 = 1/9
+          "expected_output": round(
+              float(
+                  Fraction(1, 3)*(
+                      Fraction(0, 1)
+                      + Fraction(0, 2)
+                      + Fraction(1, 3)
+                  )
+              ), 
+              6
+            )
       },
       {
           "args": {
-              "recommended_items_list": [4, 5, 3],
+              "recommended_items_list": [1, 5, 3],
               "true_items_list": [0, 1, 2, 3],
               "k": 3
           },
-          "expected_output": 1/9
-          # binary_rel = [0, 0, 1]
-          # cumrel = [0, 0, 1] / 3 = [0, 0, 1/3]
-          # res = 1/min(4, 3) * 1/3 = 1/9
+          "expected_output": round(
+              float(
+                  Fraction(1, 3)*(
+                      Fraction(1, 1)
+                      + Fraction(1, 2)
+                      + Fraction(2, 3)
+                  )
+              ), 
+              6
+            )
       },
       {
           "args": {
@@ -168,10 +192,16 @@ ap_at_k_test_cases = [
               "true_items_list": [1, 2, 3],
               "k": 3
           },
-          "expected_output": 1/3
-          # binary_rel = [0, 1, 1]
-          # cumrel = [0, 1, 2] / 3 = [0, 1/3, 2/3]
-          # res = 1/min(3, 3) * (1/3 + 2/3) = 1/3
+          "expected_output": round(
+              float(
+                  Fraction(1, 3)*(
+                      Fraction(0, 1)
+                      + Fraction(1, 2)
+                      + Fraction(2, 3)
+                  )
+              ), 
+              6
+            )
       },
       {
           "args": {
@@ -179,10 +209,16 @@ ap_at_k_test_cases = [
               "true_items_list": [3, 4, 5],
               "k": 5
           },
-          "expected_output": 0.4
-          # binary_rel = [0, 0, 1, 1, 1]
-          # cumrel = [0, 0, 1, 2, 3] / 5 = [0, 0, 1/5, 2/5, 3/5]
-          # res = 1/min(3, 5) * (1/5 + 2/5 + 3/5) = 2/5 = 0.4
+          "expected_output": round(
+              float(
+                  Fraction(1, min(3, 5))*(
+                      Fraction(0, 1)
+                      + Fraction(0, 2)
+                      + Fraction(1, 3)
+                  )
+              ), 
+              6
+            )
       },
       {
           "args": {
@@ -190,10 +226,16 @@ ap_at_k_test_cases = [
               "true_items_list": [3, 4, 5],
               "k": 3
           },
-          "expected_output": 1/9
-          # binary_rel = [0, 0, 1, 1, 1]
-          # cumrel = [0, 0, 1] / 3 = [0, 0, 1/3]
-          # res = 1/min(3, 5) * (1/3) = 1/9
+          "expected_output": round(
+              float(
+                  Fraction(1, 3)*(
+                      Fraction(0, 1)
+                      + Fraction(0, 2)
+                      + Fraction(1, 3)
+                  )
+              ), 
+              6
+            )
       },
       {
           "args": {
@@ -201,10 +243,16 @@ ap_at_k_test_cases = [
               "true_items_list": [1, 2, 3],
               "k": 5
           },
-          "expected_output": 1/5
-          # binary_rel = [1, 1, 0, 0, 0]
-          # cumrel = [1, 2, 0, 0, 0] / 5 = [1/5, 2/5, 0, 0, 0]
-          # res = 1/min(3, 5) * (1/5 + 2/5) = (3/5) * (1/3) = 1/5
+          "expected_output": round(
+              float(
+                  Fraction(1, min(3, 5))*(
+                      Fraction(1, 1)
+                      + Fraction(2, 2)
+                      + Fraction(2, 3)
+                  )
+              ), 
+              6
+            )
       },
   ]
 
