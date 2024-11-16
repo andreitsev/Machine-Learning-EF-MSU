@@ -13,4 +13,4 @@
 
 [Seminar_GradientBoosting](https://nbviewer.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Seminars/Seminar_GradientBoosting.ipynb)
 
-[Seminar_diffusion_models.ipynb](https://nbviewer.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Seminars/Seminar_diffusion_models.ipynb)
+[Seminar_diffusion_models](https://nbviewer.org/github/andreitsev/Machine-Learning-EF-MSU/blob/master/Seminars/Seminar_diffusion_models.ipynb)
