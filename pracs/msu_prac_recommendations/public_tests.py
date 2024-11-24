@@ -702,4 +702,43 @@ user2user_get_items_scores_test_cases = [
     }
 ]
 
+interactions_df = pd.DataFrame({
+    "user_id": [1, 1, 2, 2, 3, 3],
+    "item_id": [10, 20, 10, 30, 20, 30],
+    "rating": [5, 4, 5, 3, 4, 2],
+})
+
+
+als_initialise_embeddings_test_cases = [
+    {
+        "init_args": {
+            "embeddings_dim": 8, 
+            "random_seed": 42,
+        },
+        "_initialise_embeddings_args": {
+            "n_unq_users": 3, 
+            "n_unq_items": 4,
+        },
+        "expected_output": {
+            "users_embeddings_shape": (3, 8),
+            "items_embeddings_shape": (4, 8),
+        }
+    },
+    {
+        "init_args": {
+            "embeddings_dim": 15, 
+            "random_seed": 12,
+        },
+        "_initialise_embeddings_args": {
+            "n_unq_users": 10, 
+            "n_unq_items": 4,
+        },
+        "expected_output": {
+            "users_embeddings_shape": (10, 15),
+            "items_embeddings_shape": (4, 15),
+        }
+    },
+]
+
+
 
