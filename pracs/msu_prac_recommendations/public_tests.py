@@ -1,3 +1,4 @@
+import array
 from fractions import Fraction
 
 import numpy as np
@@ -741,4 +742,49 @@ als_initialise_embeddings_test_cases = [
 ]
 
 
+# Dummy embeddings for items
+dummy_item_embeddings_1 = np.array([
+    [1.0, 0.5],  # Item 0 embedding
+    [0.3, 0.8],  # Item 1 embedding
+])
+
+dummy_item_embeddings_2 = np.array([
+    [0.1, 0.2, 0.3],  # Item 0 embedding
+    [0.4, 0.5, 0.6],  # Item 1 embedding
+    [0.7, 0.8, 0.9],  # Item 2 embedding
+])
+
+# Regularization coefficient
+reg_coef = 0.1
+identity_2x2 = np.eye(2)
+identity_3x3 = np.eye(3)
+
+_als_user_step_test_cases = [
+    {
+        "args": {
+            "items_embeddings": np.array([
+                [0, 1.0, 0],
+                [-1.0, 2.0, 2.1],
+                [1.5, 1.1, 2.0],
+            ]),
+            "user_ratings": np.array([5.0, 1.0, 2.0]),
+            "reg_coef": 1.0
+        },
+        "expected_output": np.array([0.81186175, 2.04128491, -0.81773635])
+    },
+    {
+        "args": {
+            "items_embeddings": np.array([
+                [0, 1.0, 0, 1.0, 1.5, -1.5, 0],
+                [-1.0, 2.0, 2.1, 3.1, 3.1, -2.0, 1.1],
+                [1.5, 1.1, 2.0, 11.5, -3.1, 5.7, -0.5],
+            ]),
+            "user_ratings": np.array([5.0, 1.0, 2.0]),
+            "reg_coef": 2.0
+        },
+        "expected_output": np.array([0.55809731, 0.43001109, -0.8480172, 0.57417105, 0.29982033, -0.64635934, -0.54156039])
+    },
+]
+
+ 
 

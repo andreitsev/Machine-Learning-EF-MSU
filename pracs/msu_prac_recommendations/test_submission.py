@@ -18,6 +18,8 @@ from public_tests import (
    user2user_similarity_test_cases,
    user2user_get_items_scores_test_cases,
    als_initialise_embeddings_test_cases,
+  #  recompute_user_embedding_test_cases,
+   _als_user_step_test_cases
 )
 
 # from utils.metrics import (
@@ -36,8 +38,8 @@ from utils_solved.distances import jaccard_sim
 # from utils.models import User2User
 from utils_solved.models import User2User
 
-# from utils.models import ALS
-from utils_solved.models import ALS
+# from utils.models import ALS, _als_user_step
+from utils_solved.models import ALS, _als_user_step
 
 
 def test__compute_binary_relevance(add_score_for_this_test: float=1.0) -> float:
@@ -260,15 +262,6 @@ def test_user2user_get_items_scores(add_score_for_this_test: float=1.0) -> float
 def test_initialise_embeddings(add_score_for_this_test: float=1.0) -> float:
     score = 0
     add_score_flag = True
-    
-    # model = ALS(embeddings_dim=8, random_seed=42)
-    # model._initialise_embeddings(n_unq_users=3, n_unq_items=4)
-    # assert model.users_embeddings.shape == (3, 8), "User embeddings shape is incorrect!"
-    # assert model.items_embeddings.shape == (4, 8), "Item embeddings shape is incorrect!"
-    # print("test_initialise_embeddings passed ✓")
-    
-    # if add_score_flag:
-    #   score += add_score_for_this_test
       
     test_cases = als_initialise_embeddings_test_cases
     for i, test_case in enumerate(test_cases, start=1):
@@ -300,6 +293,78 @@ def test_initialise_embeddings(add_score_for_this_test: float=1.0) -> float:
       score += add_score_for_this_test
     return score
 
+# def test_recompute_user_embedding(add_score_for_this_test: float = 1.0) -> float:
+#     score = 0
+#     add_score_flag = True
+#     test_cases = recompute_user_embedding_test_cases
+#     for i, test_case in enumerate(test_cases, start=1):
+#         try:
+#             print(f"Test {i}:")
+#             model = ALS(**test_case['init_args'])
+#             # Extract inputs
+#             user_adjacency_list = test_case["args"]["user_adjacency_list"]
+#             item_embeddings = test_case["args"]["item_embeddings"]
+#             reg_coef = test_case["args"]["reg_coef"]
+#             identity_matrix = test_case["args"]["identity_matrix"]
+
+#             # Compute output
+#             if not user_adjacency_list["items"]:
+#                 # No interactions
+#                 computed_output = np.zeros((item_embeddings.shape[1],))
+#             else:
+#                 items_embs = item_embeddings[user_adjacency_list["items"]]
+#                 ratings = np.array(user_adjacency_list["ratings"])
+#                 computed_output = np.linalg.inv(
+#                     items_embs.T @ items_embs + reg_coef * identity_matrix
+#                 ) @ (items_embs.T @ ratings)
+
+#             # Compare with expected output
+#             decision = (
+#                 "passed ✓" if np.allclose(computed_output, test_case["expected_output"]) else "failed x"
+#             )
+#             color_print(decision, color="green" if decision == "passed ✓" else "red")
+#             if decision == "failed x":
+#                 add_score_flag = False
+#                 print("Test Case:", test_case)
+#                 print("Computed Output:", computed_output)
+#                 print("Expected Output:", test_case["expected_output"])
+#                 print()
+#         except Exception as e:
+#             add_score_flag = False
+#             color_print(f"Failed to test _recompute_user_embedding for test {i}!", color="red")
+#             print(e, end="\n" * 2)
+
+#     if add_score_flag:
+#         score += add_score_for_this_test
+#     return score
+
+def test__als_user_step_test_cases(add_score_for_this_test: float = 1.0) -> float:
+    score = 0
+    add_score_flag = True
+    test_cases = _als_user_step_test_cases
+    for i, test_case in enumerate(test_cases, start=1):
+        try:
+            print(f"Test {i}:")
+            computed_output = _als_user_step(**test_case['args'])
+            # Compare with expected output
+            decision = (
+                "passed ✓" if np.allclose(computed_output, test_case["expected_output"]) else "failed x"
+            )
+            color_print(decision, color="green" if decision == "passed ✓" else "red")
+            if decision == "failed x":
+                add_score_flag = False
+                print("Test Case:", test_case)
+                print("Computed Output:", computed_output)
+                print("Expected Output:", test_case["expected_output"])
+                print()
+        except Exception as e:
+            add_score_flag = False
+            color_print(f"Failed to test _als_user_step for test {i}!", color="red")
+            print(e, end="\n" * 2)
+
+    if add_score_flag:
+        score += add_score_for_this_test
+    return score
 
 
 if __name__ == '__main__':
@@ -313,6 +378,7 @@ if __name__ == '__main__':
       partial(test_user2user_similarity, add_score_for_this_test=1.0),
       partial(test_user2user_get_items_scores, add_score_for_this_test=1.0),
       partial(test_initialise_embeddings, add_score_for_this_test=1.0),
+      partial(test__als_user_step_test_cases, add_score_for_this_test=1.0)
     ]:
       function_name = testing_function.func.__name__
       print(f"\n{function_name}...")
