@@ -754,11 +754,6 @@ dummy_item_embeddings_2 = np.array([
     [0.7, 0.8, 0.9],  # Item 2 embedding
 ])
 
-# Regularization coefficient
-reg_coef = 0.1
-identity_2x2 = np.eye(2)
-identity_3x3 = np.eye(3)
-
 _als_user_step_test_cases = [
     {
         "args": {
@@ -783,6 +778,104 @@ _als_user_step_test_cases = [
             "reg_coef": 2.0
         },
         "expected_output": np.array([0.55809731, 0.43001109, -0.8480172, 0.57417105, 0.29982033, -0.64635934, -0.54156039])
+    },
+    {
+        "args": {
+            "items_embeddings": np.array([
+                [0.0, 1.0, -1.0, 0.0],
+                [0.0, 0.0, 0.0, 1.0],
+                [0.0, 1.0, 2.0, 3.0],
+                [-1.0, 0.0, 1.0, 0.0],
+                [1.0, 2.0, 3.0, 0.0],
+                [0.0, 1.0, 1.0, 0.0],
+            ]),
+            "user_ratings": np.array([5.0, 4.0, 5.0, 5.0, 3.0, 4.0]),
+            "reg_coef": 1.0
+        },
+        "expected_output": np.array([-2.50867052, 2.75337187, 0.00963391, 0.97109827])
+    },
+    {
+        "args": {
+            "items_embeddings": np.array([
+                [0.0, 1.0, -1.0],
+                [0.0, 0.0, 1.0],
+                [0.0, 1.0, 2.0],
+            ]),
+            "user_ratings": np.array([5.0, 4.0, 5.0]),
+            "reg_coef": 1.0
+        },
+        "expected_output": np.array([0.0, 3.05, 0.85])
+    },
+    {
+        "args": {
+            "items_embeddings": np.array([
+                [1.0, 1.0],
+                [1.0, 0.0],
+                [3.0, 1.0],
+                [-1.5, 1.0],
+                [1.0, 2.0],
+                [0.0, 1.0],
+            ]),
+            "user_ratings": np.array([5.0, 4.0, 5.0, 3.1, 2.5, 5.0]),
+            "reg_coef": 1.5
+        },
+        "expected_output": np.array([0.80096618, 2.05217391])
+    },
+]
+
+_als_item_step_test_cases = [
+    {
+        "args": {
+            "users_embeddings": np.array([
+                [0, 1.0, 0],
+                [-1.0, 2.0, 2.1],
+                [1.5, 1.1, 2.0],
+            ]),
+            "items_ratings": np.array([5.0, 1.0, 2.0]),
+            "reg_coef": 1.0
+        },
+        "expected_output": np.array([0.81186175, 2.04128491, -0.81773635]),
+    },
+    {
+        "args": {
+            "users_embeddings": np.array([
+                [0.0, 1.0, 0.0, 1.0],
+                [0.0, 0.0, 1.0, 0.0],
+                [0.0, 2.0, 3.5, 0.0],
+            ]),
+            "items_ratings": np.array([5.0, 1.0, 2.0]),
+            "reg_coef": 1.0
+        },
+        "expected_output": np.array([0.0, 1.24680851, -0.05106383, 1.87659574]),
+    },
+    {
+        "args": {
+            "users_embeddings": np.array([
+                [1.0, 0.0, -1.0, 0.0, 0.0, 0.0],
+                [0.0, 2.0, 3.0, 5.0, 0.0, 0.0],
+                [0.0, 0.0, 0.0, 5.0, 0.0, 0.0],
+                [0.0, 0.0, 1.0, 0.0, 0.0, 0.0],
+                [0.0, 1.1, 0.0, 0.0, 0.0, 0.0],
+                [0.0, 0.0, 2.0, 0.0, 0.0, 0.0],
+                [0.0, 0.0, 0.0, 3.0, 3.5, 1.0],
+                [0.0, 0.0, 0.0, 0.0, 0.0, 1.5],
+            ]),
+            "items_ratings": np.array([1.0, 1.0, 2.0, 2.0, 5.0, 5.0, 3.5, 2.5]),
+            "reg_coef": 3.5
+        },
+        "expected_output": np.array([0.35468729, 0.36209406, 0.59609282, 0.07696039, 0.5599045, 0.74954861]),
+    },
+        {
+        "args": {
+            "users_embeddings": np.array([
+                [0.0, 1.0, -1.0],
+                [0.0, 0.0, 1.0],
+                [0.0, 1.0, 2.0],
+            ]),
+            "items_ratings": np.array([5.0, 4.0, 5.0]),
+            "reg_coef": 1.0
+        },
+        "expected_output": np.array([0.0, 3.05, 0.85])
     },
 ]
 
