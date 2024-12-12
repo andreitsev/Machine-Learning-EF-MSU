@@ -3,3 +3,4 @@ numpy==1.26.4
 pandas==2.2.2
 scipy==1.13.1
 fabulous==0.4.0
+tqdm==4.66.5
