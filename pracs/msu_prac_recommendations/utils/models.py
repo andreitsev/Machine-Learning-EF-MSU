@@ -168,6 +168,14 @@ ItemInfoType = Dict[ItemID, Tuple[UserIDs, RatingsType]]
 """
 
 class ALS:
+    """
+    Class for training LFM model with ALS algorithm
+    (formula (1.1) from this file: https://yadi.sk/i/7ZONA2kIqROfRQ)
+    NOTE: in this inplementation we won't train user and item biases, thus the optimisation
+        problem looks like that:
+        
+        ∑_{(u,i): \exists r_{ui}} (r_{ui} - <p_{u}, q_{i}>)^2 -> min_{P, Q}
+    """
 
     def __init__(
         self,
