@@ -1,7 +1,5 @@
 from typing import List
 
-import numpy as np
-
 def _compute_binary_relevance(
     recommended_items_list: List[int],
     true_items_list: List[int],

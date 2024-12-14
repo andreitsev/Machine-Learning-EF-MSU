@@ -1,10 +1,26 @@
-from typing import Callable, List
+import random
+from typing import Callable, List, Iterable, Dict, Optional, Union, Tuple
 
+from tqdm import tqdm
 import numpy as np
 from numpy.typing import NDArray
 import pandas as pd
 
 from utils.distances import jaccard_sim
+
+user_col = 'user_id'
+item_col = 'item_id'
+rating_col = 'rating'
+
+def tqdm_or_identity(
+    iterable: Iterable,
+    verbose: bool=False,
+) -> Callable[[Iterable], None]:
+  if verbose:
+    return tqdm(iterable)
+  else:
+    return iterable
+
 
 similarityFuncType = Callable[[NDArray[float], NDArray[float]], NDArray[float]]
 
@@ -67,11 +83,12 @@ class User2User(BaseModel):
             vector of simillarities between this user and all users in self.R
         """
         # your code here:
-        pass
+        ...
     
     def get_items_scores(self, uid: int) -> NDArray[float]:
-        """Computes scores \hat{r}_{ui} for all items in rating matrix for
-        a particular user uid
+        """Computes scores \hat{r}_{ui} (https://www.overleaf.com/read/vcqdvjkbjgzf#9c30ef) for all items in rating matrix for
+        a particular user uid. Don't forget, that similarity of user u with himself should
+        be zero to not get recommendetations from his own interactions.
 
         Args:
             uid (int): index of user from rating matrix
@@ -79,9 +96,112 @@ class User2User(BaseModel):
             scores_u (NDArray[float]): array of scores for all items
         """
         # your code here:
-        pass
+        ...
 
     def recommend(self, uid: int):
         scores_u = self.get_items_scores(uid=uid)
         predictions_u = np.array([idx for idx in np.argsort(scores_u)[::-1]])
         return predictions_u
+    
+    
+
+def _als_user_step(
+    items_embeddings: NDArray[float],
+    user_ratings: NDArray[float],
+    reg_coef: float,
+) -> NDArray[float]:
+    """
+    ALS model (https://yadi.sk/i/7ZONA2kIqROfRQ) consists of 2 steps: 
+        1) recompute users embeddings
+        2) recompute items embeddings
+    
+    This function allows one to recompute embedding for one particular user,
+    given ratings that he gave and items_embeddings of those items, that the user has rated
+    """
+    # your code here
+    ...
+
+def _als_item_step(
+    users_embeddings: NDArray[float],
+    items_ratings: NDArray[float],
+    reg_coef: float,
+) -> NDArray[float]:
+    """
+    ALS model (https://yadi.sk/i/7ZONA2kIqROfRQ) consists of 2 steps: 
+        1) recompute users embeddings
+        2) recompute items embeddings
+    
+    This function allows one to recompute embedding for one particular item,
+    given ratings that we have for this item from different users and users_embeddings of those users, who have rated this item
+    """
+    # your code here
+    ...
+    
+
+UserID = Union[str, int]
+ItemID = Union[str, int]
+UserIDs = List[UserID]
+ItemIDs = List[ItemID]
+RatingsType = List[float]
+EmbeddingType = Dict[Union[UserID, ItemID], List[float]]
+"""
+{
+    "u1": [1.0, -1.3, 3.5, 4.1],
+    "u2": [-4.5, 3.3, 3.5, 0.1],
+    "u3": [-4.65, -1.8, 4.18, 2.12],
+    ...
+}
+"""
+UserInfoType = Dict[UserID, Tuple[ItemIDs, RatingsType]]
+"""
+{
+    "u1": (["i1", "i4", ...], [5.0, 3.5, ...]),
+    ...
+}
+"""
+ItemInfoType = Dict[ItemID, Tuple[UserIDs, RatingsType]]
+"""
+{
+    "i1": (["u3", "u5", ...], [1.5, 5.0, ...]),
+    ...
+}
+"""
+
+class ALS:
+
+    def __init__(
+        self,
+        embeddings_dim: int=16,
+        reg_coef: float=1.0,
+        random_seed: int=59812
+    ):
+        self.embeddings_dim = embeddings_dim
+        self.random_seed = random_seed
+        self.reg_coef = reg_coef
+        self.user2emb, self.item2emb = {}, {}
+        self.users_embeddings: Optional[EmbeddingType] = None
+        self.items_embeddings: Optional[EmbeddingType] = None
+        
+    def fit(
+        self, 
+        interactions: pd.DataFrame, 
+        epochs: int=20, 
+        verbose: bool=False,
+        embeddings_initialized: bool=False,
+    ):
+        """
+        Trains the model - iteratively recomputes self.users_embeddings and self.items_embeddings
+        
+        Args:
+            interactions: dataframe of interactions (necessary columns: user_col, item_col, rating_col)
+                for model training
+            epochs: amount of iterations to recompute users_embeddings and items_embeddings
+            verbose: whether to do additional logging during training or not
+            embeddings_initialized (bool): whether to initialize self.users_embeddings and self.items_embeddings or
+                they are already initialized
+                
+        IMPORTANT NOTE: first recompute users embeddings, then items embeddings
+        """
+        # your code here
+        return self
+

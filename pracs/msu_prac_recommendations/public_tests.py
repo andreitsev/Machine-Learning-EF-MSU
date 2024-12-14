@@ -4,24 +4,12 @@ from fractions import Fraction
 import numpy as np
 import pandas as pd
 
-# from utils_solved.models import (
-#     ConstantRecommender
-# )
-from utils_solved.models import (
+from utils.models import (
     user_col,
     item_col,
     rating_col,
 )
-# from utils.models import ConstantRecommender
-# from utils.models import (
-#     user_col,
-#     item_col,
-#     rating_col,
-# )
-
-## TODO uncomment utils.distances and remove utils.distances_solved 
-# from utils.distances import jaccard_sim
-from utils_solved.distances import jaccard_sim
+from utils.distances import jaccard_sim
 
 
 def _process_ratings_array(arr: np.array) -> pd.DataFrame:
