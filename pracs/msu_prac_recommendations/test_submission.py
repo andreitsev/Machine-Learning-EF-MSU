@@ -394,16 +394,15 @@ if __name__ == '__main__':
     total_score = 0
     for testing_function in [
       partial(test__compute_binary_relevance, add_score_for_this_test=1.0),
-      partial(test_ap_at_k, add_score_for_this_test=1.0),
+      partial(test_ap_at_k, add_score_for_this_test=2.0),
       partial(test_map_at_k, add_score_for_this_test=1.0),
       partial(test_jaccard_sim, add_score_for_this_test=1.0),
-      partial(test_user2user_similarity_output_length, add_score_for_this_test=1.0),
+      partial(test_user2user_similarity_output_length, add_score_for_this_test=0.0),
       partial(test_user2user_similarity, add_score_for_this_test=1.0),
-      partial(test_user2user_get_items_scores, add_score_for_this_test=1.0),
-      # partial(test_initialise_embeddings, add_score_for_this_test=1.0),
-      partial(test__als_user_step, add_score_for_this_test=1.0),
-      partial(test__als_item_step, add_score_for_this_test=1.0),
-      partial(test__als_fit, add_score_for_this_test=3.0),
+      partial(test_user2user_get_items_scores, add_score_for_this_test=3.0),
+      partial(test__als_user_step, add_score_for_this_test=2.0),
+      partial(test__als_item_step, add_score_for_this_test=2.0),
+      partial(test__als_fit, add_score_for_this_test=8.0),
     ]:
       function_name = testing_function.func.__name__
       print(f"\n{function_name}...")
