@@ -117,10 +117,10 @@ ap_at_k_test_cases = [
           "expected_output": round(
               float(
                   Fraction(1, 4)*(
-                      Fraction(1, 1)
-                      + Fraction(2, 2)
-                      + Fraction(2, 3)
-                      + Fraction(2, 4)
+                      Fraction(1, 1) * 1
+                      + Fraction(2, 2) * 1
+                      + Fraction(2, 3) * 0
+                      + Fraction(2, 4) * 0
                   )
               ), 
               6
@@ -143,9 +143,9 @@ ap_at_k_test_cases = [
           "expected_output": round(
               float(
                   Fraction(1, 3)*(
-                      Fraction(0, 1)
-                      + Fraction(0, 2)
-                      + Fraction(1, 3)
+                      Fraction(0, 1) * 0
+                      + Fraction(0, 2) * 0
+                      + Fraction(1, 3) * 1
                   )
               ), 
               6
@@ -160,9 +160,9 @@ ap_at_k_test_cases = [
           "expected_output": round(
               float(
                   Fraction(1, 3)*(
-                      Fraction(0, 1)
-                      + Fraction(0, 2)
-                      + Fraction(1, 3)
+                      Fraction(0, 1) * 0
+                      + Fraction(0, 2) * 0
+                      + Fraction(1, 3) * 1
                   )
               ), 
               6
@@ -177,9 +177,9 @@ ap_at_k_test_cases = [
           "expected_output": round(
               float(
                   Fraction(1, 3)*(
-                      Fraction(1, 1)
-                      + Fraction(1, 2)
-                      + Fraction(2, 3)
+                      Fraction(1, 1) * 1
+                      + Fraction(1, 2) * 0
+                      + Fraction(2, 3) * 1
                   )
               ), 
               6
@@ -194,9 +194,9 @@ ap_at_k_test_cases = [
           "expected_output": round(
               float(
                   Fraction(1, 3)*(
-                      Fraction(0, 1)
-                      + Fraction(1, 2)
-                      + Fraction(2, 3)
+                      Fraction(0, 1) * 0
+                      + Fraction(1, 2) * 1
+                      + Fraction(2, 3) * 1
                   )
               ), 
               6
@@ -211,9 +211,11 @@ ap_at_k_test_cases = [
           "expected_output": round(
               float(
                   Fraction(1, min(3, 5))*(
-                      Fraction(0, 1)
-                      + Fraction(0, 2)
-                      + Fraction(1, 3)
+                      Fraction(0, 1) * 0
+                      + Fraction(0, 2) * 0
+                      + Fraction(1, 3) * 1
+                      + Fraction(2, 4) * 1
+                      + Fraction(3, 5) * 1
                   )
               ), 
               6
@@ -228,9 +230,9 @@ ap_at_k_test_cases = [
           "expected_output": round(
               float(
                   Fraction(1, 3)*(
-                      Fraction(0, 1)
-                      + Fraction(0, 2)
-                      + Fraction(1, 3)
+                      Fraction(0, 1) * 0
+                      + Fraction(0, 2) * 0
+                      + Fraction(1, 3) * 1
                   )
               ), 
               6
@@ -245,9 +247,11 @@ ap_at_k_test_cases = [
           "expected_output": round(
               float(
                   Fraction(1, min(3, 5))*(
-                      Fraction(1, 1)
-                      + Fraction(2, 2)
-                      + Fraction(2, 3)
+                      Fraction(1, 1) * 1
+                      + Fraction(2, 2) * 1
+                      + Fraction(2, 3) * 0
+                      + Fraction(2, 4) * 0
+                      + Fraction(2, 5) * 0
                   )
               ), 
               6
