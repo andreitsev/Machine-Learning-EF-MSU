@@ -174,7 +174,7 @@ class ALS:
     NOTE: in this inplementation we won't train user and item biases, thus the optimisation
         problem looks like that:
         
-        ∑_{(u,i): \exists r_{ui}} (r_{ui} - <p_{u}, q_{i}>)^2 -> min_{P, Q}
+        ∑_{(u,i): \exists r_{ui}} (r_{ui} - <p_{u}, q_{i}>)^2 + reg_coef/2 * (∑_{u} ||p_{u}||^2 + ∑_{i} ||q_{i}||^2)  -> min_{P, Q}
     """
 
     def __init__(
