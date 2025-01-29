@@ -1,9 +1,3 @@
-Осень 2024
-
-Новостной чат: https://t.me/+P6MwshLoPLU1ZTdi
-
-Чат для общения: https://t.me/+V7i2qVkisRk2NWQ6
-
 
 ## Содержание
 
